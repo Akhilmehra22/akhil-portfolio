@@ -5,12 +5,13 @@
 
 export const config = {
   name: 'Akhil Mehra',
+  role: 'Analytics Engineer',
   tagline:
     'Analytics Engineer building the data models and dashboards behind better decisions',
 
   // --- TODO: fill these in ---------------------------------
   email: 'TODO@example.com',                          // TODO
-  github: 'https://github.com/TODO-your-username',    // TODO
+  github: 'https://github.com/Akhilmehra22',
   linkedin: 'https://linkedin.com/in/TODO-your-handle', // TODO
   // ---------------------------------------------------------
 

@@ -6,9 +6,9 @@ export default function SideProjects() {
   return (
     <Section
       id="side-projects"
-      label="03 — Side Projects"
+      label="Side Projects"
       title="Products I have built and shipped"
-      tone="muted"
+      lede="Separate from the analytics work above: things I built end to end because I wanted them to exist."
     >
       <ul className="minilist">
         {sideProjects.map((p) => (
@@ -16,9 +16,9 @@ export default function SideProjects() {
             <div className="minicard__main">
               <h3 className="minicard__title">{p.title}</h3>
               <p className="minicard__summary">{p.summary}</p>
-              <ul className="tags tags--sm" aria-label="Tech used">
+              <ul className="pills" aria-label="Tech used">
                 {p.tags.map((t, i) => (
-                  <li key={`${t}-${i}`} className="tag">
+                  <li key={`${t}-${i}`} className="pill">
                     {t}
                   </li>
                 ))}

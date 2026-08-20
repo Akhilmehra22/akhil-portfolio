@@ -1,10 +1,13 @@
-export default function Section({ id, label, title, children, tone = 'primary' }) {
+export default function Section({ id, label, title, lede, children }) {
   return (
-    <section id={id} className={`section section--${tone}`}>
-      <div className="section__head">
-        {label && <p className="section__label">{label}</p>}
-        {title && <h2 className="section__title">{title}</h2>}
-      </div>
+    <section id={id} className="panel reveal">
+      {(label || title || lede) && (
+        <div className="panel__head">
+          {label && <p className="eyebrow">{label}</p>}
+          {title && <h2 className="panel__title">{title}</h2>}
+          {lede && <p className="panel__lede">{lede}</p>}
+        </div>
+      )}
       {children}
     </section>
   )

@@ -6,19 +6,23 @@ export default function Projects() {
   return (
     <Section
       id="projects"
-      label="02 — Projects"
+      label="Projects"
       title="Analytics work, end to end"
+      lede="Data modelling and reporting built from the question backwards: what decision does this need to support?"
     >
       {/* A lone project reads as a deliberate feature card, not a gap. */}
       <div className={`grid ${projects.length === 1 ? 'grid--single' : ''}`}>
         {projects.map((p) => (
           <article className="card" key={p.title}>
+            {p.image && (
+              <img className="card__shot" src={p.image} alt="" loading="lazy" />
+            )}
             <h3 className="card__title">{p.title}</h3>
             <p className="card__summary">{p.summary}</p>
 
-            <ul className="tags" aria-label="Tech used">
+            <ul className="pills" aria-label="Tech used">
               {p.tags.map((t, i) => (
-                <li key={`${t}-${i}`} className="tag">
+                <li key={`${t}-${i}`} className="pill">
                   {t}
                 </li>
               ))}

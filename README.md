@@ -2,6 +2,12 @@
 
 Personal portfolio site. Vite + React, no CSS framework, no build magic.
 
+Visual design follows the warm-paper reference direction: cream panels
+(`#fff8ef` on an `#f8f2e8` gradient), Georgia body text with Trebuchet MS
+display headings, teal/coral/gold accents, and large soft radii. All tokens live
+at the top of `src/index.css` under `:root` -- change them there and the whole
+page follows.
+
 ## Fill in your details first
 
 Two files hold everything you'll want to edit.
@@ -12,9 +18,10 @@ Every value marked `TODO` needs replacing:
 
 | Field | What it is |
 |---|---|
-| `email` | Used for the `mailto:` links in the hero and footer |
-| `github` | Full profile URL |
+| `email` | Used for the `mailto:` links in the hero, Connect, and footer |
+| `github` | Full profile URL (already set to `Akhilmehra22`) |
 | `linkedin` | Full profile URL |
+| `role` | The small uppercase line under your name |
 
 Drop a square image at `public/headshot.jpg` to show a photo in the hero. If the
 file is missing, the hero falls back to your initials automatically — no broken
@@ -34,6 +41,7 @@ Adding a project is a one-file change: append an object to the `projects` array.
   tags: ['SQL Server', 'Power BI'],
   outcome: 'The finding, result, or what it changed.',
   repo: 'https://github.com/you/repo',   // '' or a TODO_ string hides the link
+  image: '/screenshot.png',              // optional; file goes in public/
 }
 ```
 
@@ -41,8 +49,9 @@ Any `repo` value that is empty or still starts with `TODO` renders as a quiet
 "Repository link coming soon" instead of a dead link — so unfinished entries
 never look broken.
 
-Two placeholder project entries are already in place; the file also holds
-`sideProjects` (the shipped products section) and `skills` (grouped skill list,
+Slots 2 and 3 sit in the file as commented-out blocks -- uncomment and fill one
+in when a project is ready, so a half-written card never reaches the live site.
+The file also holds `sideProjects` (the shipped products section) and `skills` (grouped skill list,
 where `note: 'learning'` renders the small "learning" badge).
 
 ## Run locally

@@ -3,7 +3,7 @@ import { about } from '../data/config.js'
 
 export default function About() {
   return (
-    <Section id="about" label="01 — About" title="How I work">
+    <Section id="about" label="About" title="How I work">
       <div className="prose">
         {about.map((p, i) => (
           <p key={i}>{p}</p>

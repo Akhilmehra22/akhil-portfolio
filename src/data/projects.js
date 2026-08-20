@@ -8,6 +8,7 @@
 //    tags     string[] tech tags shown as a row of chips
 //    outcome  string   the finding or result — the payoff line
 //    repo     string   GitHub URL  (set to '' to hide the link)
+//    image    string   optional screenshot in public/ (omit for no image)
 // ============================================================
 
 export const projects = [
@@ -18,7 +19,8 @@ export const projects = [
     tags: ['SQL Server', 'Power BI', 'DAX', 'Dimensional Modeling', 'Kimball'],
     outcome:
       'Late orders average 2.6 review stars against 4.3 for on-time orders — and roughly 73% of that lateness is carrier-caused, not seller-caused.',
-    repo: 'TODO_PROJECT_1_REPO_URL', // TODO: paste the GitHub URL
+    repo: 'https://github.com/Akhilmehra22/Dashboard-Analytics/tree/main/olist-delivery-performance',
+    image: '/olist-delivery-performance.png',
   },
 
   // ================================================================
