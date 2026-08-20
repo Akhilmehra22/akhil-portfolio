@@ -9,7 +9,8 @@ export default function Projects() {
       label="02 — Projects"
       title="Analytics work, end to end"
     >
-      <div className="grid">
+      {/* A lone project reads as a deliberate feature card, not a gap. */}
+      <div className={`grid ${projects.length === 1 ? 'grid--single' : ''}`}>
         {projects.map((p) => (
           <article className="card" key={p.title}>
             <h3 className="card__title">{p.title}</h3>

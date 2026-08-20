@@ -265,8 +265,22 @@ ul {
    ============================================================ */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
   gap: 1.25rem;
+}
+
+/* One project: a single wide card at reading width, so the section looks
+   composed instead of half-empty. */
+.grid--single {
+  max-width: var(--measure);
+}
+
+.grid--single .card {
+  padding: 2.25rem;
+}
+
+.grid--single .card__title {
+  font-size: 1.35rem;
 }
 
 .card {

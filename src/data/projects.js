@@ -21,24 +21,29 @@ export const projects = [
     repo: 'TODO_PROJECT_1_REPO_URL', // TODO: paste the GitHub URL
   },
 
-  // ---------- PLACEHOLDER: copy this block for new projects ----------
-  {
-    title: 'TODO — Project Two Title',
-    summary:
-      'TODO — one line on what this project is and the question it set out to answer.',
-    tags: ['TODO Tag 1', 'TODO Tag 2', 'TODO Tag 3'],
-    outcome: 'TODO — the finding, result, or what it changed.',
-    repo: 'TODO_PROJECT_2_REPO_URL',
-  },
-  {
-    title: 'TODO — Project Three Title',
-    summary:
-      'TODO — one line on what this project is and the question it set out to answer.',
-    tags: ['TODO Tag 1', 'TODO Tag 2', 'TODO Tag 3'],
-    outcome: 'TODO — the finding, result, or what it changed.',
-    repo: 'TODO_PROJECT_3_REPO_URL',
-  },
-  // -------------------------------------------------------------------
+  // ================================================================
+  //  SLOT 2 — uncomment the block below and fill it in when ready.
+  //  Left commented on purpose: a half-written card on a live site
+  //  looks worse than no card at all.
+  // ================================================================
+  // {
+  //   title: '',
+  //   summary: '',
+  //   tags: ['', '', ''],
+  //   outcome: '',
+  //   repo: '',
+  // },
+
+  // ================================================================
+  //  SLOT 3 — same deal.
+  // ================================================================
+  // {
+  //   title: '',
+  //   summary: '',
+  //   tags: ['', '', ''],
+  //   outcome: '',
+  //   repo: '',
+  // },
 ]
 
 // Products, not analyses. Kept deliberately separate from the work above.
