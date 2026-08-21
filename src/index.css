@@ -623,16 +623,14 @@ ul {
 /* ============================================================
    Project cards
    ============================================================ */
+/* Fixed max column width (not 1fr) so a lone card stays card-sized instead
+   of stretching to fill the row — and every future card lands at the same
+   width whether there's 1 project or 10, no special-casing needed. */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 360px));
+  justify-content: start;
   gap: 1rem;
-}
-
-/* One project: keep it card-sized rather than stretching into a banner. */
-.grid--single {
-  grid-template-columns: minmax(0, 1fr);
-  max-width: 620px;
 }
 
 .card {

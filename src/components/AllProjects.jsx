@@ -9,7 +9,7 @@ export default function AllProjects() {
       label="All Projects"
       title="Everything, in one place"
     >
-      <div className={`grid ${projects.length === 1 ? 'grid--single' : ''}`}>
+      <div className="grid">
         {projects.map((p) => (
           <ProjectCard project={p} key={p.slug} />
         ))}

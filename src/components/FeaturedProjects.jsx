@@ -13,7 +13,7 @@ export default function FeaturedProjects() {
       title="Selected work"
       lede="A short list of the analyses I'd lead with — the rest live in All Projects below."
     >
-      <div className={`grid ${featured.length === 1 ? 'grid--single' : ''}`}>
+      <div className="grid">
         {featured.map((p) => (
           <ProjectCard project={p} key={p.slug} />
         ))}

@@ -17,9 +17,9 @@ export default function HomePage() {
       <FitCheck />
       <About />
       <FeaturedProjects />
+      <Skills />
       <AllProjects />
       <SideProjects />
-      <Skills />
       <Connect />
     </main>
   )

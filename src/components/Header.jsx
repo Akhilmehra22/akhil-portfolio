@@ -4,8 +4,8 @@ const links = [
   { href: '#fit-check', label: 'Check Fit' },
   { href: '#about', label: 'About' },
   { href: '#featured-projects', label: 'Projects' },
-  { href: '#side-projects', label: 'Side Projects' },
   { href: '#skills', label: 'Toolkit' },
+  { href: '#side-projects', label: 'Side Projects' },
 ]
 
 function GithubIcon() {
