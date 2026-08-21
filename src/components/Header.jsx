@@ -12,8 +12,8 @@ function GithubIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
-      width="18"
-      height="18"
+      width="23"
+      height="23"
       fill="currentColor"
       aria-hidden="true"
     >
@@ -26,8 +26,8 @@ function LinkedinIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
-      width="18"
-      height="18"
+      width="23"
+      height="23"
       fill="currentColor"
       aria-hidden="true"
     >
@@ -41,6 +41,9 @@ export default function Header() {
     <header className="site-header">
       <div className="site-header__inner">
         <a className="brand" href="#top">
+          <span className="brand__mark" aria-hidden="true">
+            AM
+          </span>
           {config.name}
         </a>
         <nav className="site-nav" aria-label="Sections">

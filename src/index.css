@@ -125,12 +125,31 @@ ul {
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
   font-family: var(--display);
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   white-space: nowrap;
+}
+
+/* Same teal/cream monogram as the browser-tab favicon, echoed in the header. */
+.brand__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7em;
+  height: 1.7em;
+  border-radius: 30%;
+  background: var(--teal);
+  color: #fff8ef;
+  font-size: 0.62em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: none;
 }
 
 .site-nav {
@@ -372,23 +391,23 @@ ul {
 /* Base size lives here so name and link scale together (em, not
    independent rem values) — bump this one number and both follow. */
 .profile-panel__identity {
-  font-size: 1.15rem;
+  font-size: 1.3rem;
 }
 
 .profile-panel__name {
   font-family: var(--serif);
-  font-size: 1.3em;
+  font-size: 1.4em;
   font-weight: 700;
   letter-spacing: normal;
 }
 
 .profile-panel__link {
   display: inline-block;
-  margin-top: 0.3rem;
+  margin-top: 0.35rem;
   font-family: var(--display);
-  font-size: 0.58em;
+  font-size: 0.85em;
   font-weight: 700;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--teal);
 }
