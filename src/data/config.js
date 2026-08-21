@@ -20,6 +20,31 @@ export const config = {
   headshot: '/headshot.jpeg',
 }
 
+// The credentials grid shown beside the hero photo. Keep this in sync with
+// cv.md — these are the same facts, just surfaced at a glance. Leave any
+// `url` empty to hide that card's link.
+export const credentials = {
+  currentRole: {
+    title: 'Analytics Engineer',
+    org: 'Titanium Transportation Group',
+    url: '', // TODO: company site, optional
+  },
+  previousRole: {
+    title: 'Data Consultant',
+    org: 'QNE Software (Client: Telus International)',
+    url: '', // TODO: company site, optional
+  },
+  education: {
+    program: 'Business Analytics',
+    school: 'St. Lawrence College',
+    url: '', // TODO: program page, optional
+  },
+  experience: {
+    stat: '5+ years',
+    note: 'Across transportation, telecom, and gaming',
+  },
+}
+
 export const about = [
   'I am a self-taught analytics engineer who learns by building things that have to work.',
   'I work at a logistics company in Toronto, where I build the analytics and reporting infrastructure the business runs on — models, pipelines, and the dashboards people actually open.',
