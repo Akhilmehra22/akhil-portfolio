@@ -15,7 +15,7 @@ export default function Hero() {
   const [imgOk, setImgOk] = useState(true)
 
   return (
-    <section className="hero reveal is-visible" id="top">
+    <section className="panel hero reveal is-visible" id="top">
       <div className="hero__main">
         <aside className="profile-panel lift">
           <div className="profile-panel__head">

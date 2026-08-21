@@ -309,15 +309,18 @@ ul {
   line-height: 1.5;
 }
 
-/* Profile panel — photo, name, credentials */
+/* Profile panel — photo, name, credentials.
+   Nested inside the hero panel, so it gets a firmer surface and a lighter
+   shadow than the outer box — otherwise it reads as a panel inside an
+   identical panel. */
 .profile-panel {
   display: grid;
   gap: 1rem;
   padding: clamp(1.15rem, 2.5vw, 1.5rem);
-  border: 1px solid var(--hairline-light);
-  border-radius: var(--radius-xl);
-  background: var(--surface);
-  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface-strong);
+  box-shadow: 0 10px 26px rgba(55, 43, 21, 0.06);
 }
 
 .profile-panel__head {
@@ -396,9 +399,10 @@ ul {
 }
 
 .cred {
-  background: var(--surface-strong);
+  /* Lighter than the profile panel it sits in, so the cards read as cards. */
+  background: rgba(255, 255, 255, 0.66);
   border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
+  border-radius: 18px;
   padding: 1rem 1.1rem;
   display: grid;
   gap: 0.3rem;
