@@ -34,6 +34,11 @@ export const credentials = {
     org: 'QNE Software (Client: Telus International)',
     url: '', // TODO: company site, optional
   },
+  earlierRole: {
+    title: 'Data Analyst',
+    org: 'PokerBaazi (Baazi Games)',
+    url: '', // TODO: company site, optional
+  },
   education: {
     program: 'Business Analytics',
     school: 'St. Lawrence College',

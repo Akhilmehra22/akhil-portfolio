@@ -315,6 +315,10 @@ ul {
   align-content: start;
 }
 
+.cred--wide {
+  grid-column: 1 / -1;
+}
+
 .cred__eyebrow {
   font-family: var(--display);
   font-size: 0.66rem;

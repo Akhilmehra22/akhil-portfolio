@@ -16,7 +16,8 @@ function CredCard({ eyebrow, primary, secondary, url, linkLabel }) {
 }
 
 export default function Credentials() {
-  const { currentRole, previousRole, education, experience } = credentials
+  const { currentRole, previousRole, earlierRole, education, experience } =
+    credentials
 
   return (
     <div className="creds">
@@ -35,13 +36,20 @@ export default function Credentials() {
         linkLabel="Open company website"
       />
       <CredCard
+        eyebrow="Earlier Role"
+        primary={earlierRole.title}
+        secondary={earlierRole.org}
+        url={earlierRole.url}
+        linkLabel="Open company website"
+      />
+      <CredCard
         eyebrow="Education"
         primary={education.program}
         secondary={education.school}
         url={education.url}
         linkLabel="Open program page"
       />
-      <div className="cred">
+      <div className="cred cred--wide">
         <p className="cred__eyebrow">Experience</p>
         <p className="cred__stat">{experience.stat}</p>
         <p className="cred__secondary">{experience.note}</p>
