@@ -57,7 +57,7 @@ export const credentials = {
 
 export const about = [
   'I am an analytics engineer who learns by building things that have to work.',
-  'Currently, I lead data infrastructure for a Toronto logistics company, where I recently drove a 0-to-1 data warehouse transformation — replacing fragmented spreadsheets with a production-grade dimensional model.',
+  'Currently, I lead data infrastructure for a Toronto logistics company, where I recently drove a 0-to-1 data warehouse transformation, replacing fragmented spreadsheets with a production-grade dimensional model.',
   'I build the analytics and reporting architecture the business runs on, creating the models, pipelines, and semantic layers that people actually use.',
   'I am highly comfortable across the full data stack: advanced SQL, Kimball methodology, Python, and Power BI/DAX.',
   'My bias is execution. I would rather ship a reliable model that answers a critical question this week than design a perfect one that answers everything next quarter.',
