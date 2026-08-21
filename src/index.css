@@ -215,37 +215,139 @@ ul {
 }
 
 /* ============================================================
-   Hero
+   Shared hover lift — cards rise slightly off the page.
    ============================================================ */
-.hero__grid {
+.lift {
+  position: relative;
+  transition: transform 220ms ease, box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.lift:hover {
+  transform: translateY(-4px);
+  border-color: var(--line-strong);
+  box-shadow: 0 22px 42px rgba(55, 43, 21, 0.1);
+}
+
+/* ============================================================
+   Hero — copy on the left, profile panel on the right
+   ============================================================ */
+.hero__main {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  gap: clamp(2rem, 5vw, 3.5rem);
+  grid-template-columns: minmax(0, 1.1fr) minmax(22rem, 0.9fr);
+  gap: 1.4rem;
   align-items: start;
 }
 
-@media (max-width: 860px) {
-  .hero__grid {
+@media (max-width: 940px) {
+  .hero__main {
     grid-template-columns: minmax(0, 1fr);
   }
 }
 
-.hero__intro {
+.hero__copy {
   display: grid;
-  gap: 1.4rem;
+  gap: 1rem;
+  align-content: start;
+  padding: clamp(1.4rem, 1.3vw, 1.85rem) 0.2rem 0.2rem 0;
 }
 
-.hero__top {
+.hero__role-title {
+  font-size: clamp(2.1rem, 5.5vw, 3.35rem);
+  letter-spacing: -0.03em;
+}
+
+.hero__intro {
+  color: var(--muted);
+  max-width: 54ch;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 0.2rem;
+}
+
+.hero__highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  align-items: stretch;
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 720px) {
+  .hero__highlights {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.hero__highlight {
+  display: grid;
+  gap: 0.42rem;
+  align-content: start;
+  min-height: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.hero__highlight-title {
+  font-family: var(--display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.hero__highlight-text {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Profile panel — photo, name, credentials */
+.profile-panel {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1.15rem, 2.5vw, 1.5rem);
+  border: 1px solid var(--hairline-light);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.profile-panel__head {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.profile-panel__name {
+  font-family: var(--display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.profile-panel__link {
+  display: inline-block;
+  margin-top: 0.3rem;
+  font-family: var(--display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--teal);
 }
 
 .hero__avatar {
-  width: 128px;
-  height: 160px;
-  border-radius: 26px;
+  width: 92px;
+  height: 112px;
+  border-radius: 20px;
   overflow: hidden;
   flex: none;
   background: var(--surface-strong);
@@ -269,24 +371,12 @@ ul {
   color: var(--muted);
 }
 
-.hero__name {
-  font-size: clamp(2.1rem, 6vw, 3.35rem);
-  letter-spacing: -0.03em;
-}
-
-.hero__role {
-  margin-top: 0.5rem;
-  font-family: var(--display);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--coral);
-}
-
 .hero__tagline {
   font-size: clamp(1.05rem, 2.2vw, 1.2rem);
-  color: var(--muted);
+  color: var(--coral);
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
   max-width: 46ch;
 }
 
@@ -313,6 +403,15 @@ ul {
   display: grid;
   gap: 0.3rem;
   align-content: start;
+  transition: transform 180ms ease, border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+/* Smaller lift than the big cards — these sit inside a panel already. */
+.cred:hover {
+  transform: translateY(-2px);
+  border-color: var(--line-strong);
+  box-shadow: 0 14px 24px rgba(55, 43, 21, 0.08);
 }
 
 .cred--wide {
@@ -435,6 +534,17 @@ ul {
   transform: translateY(-1px);
 }
 
+.btn--solid {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #fff8ef;
+}
+
+.btn--solid:hover {
+  background: #16645f;
+  border-color: #16645f;
+}
+
 .btn--quiet {
   background: rgba(255, 255, 255, 0.6);
   border-color: var(--line);
@@ -488,14 +598,15 @@ ul {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   padding: clamp(1.15rem, 2.5vw, 1.6rem);
-  transition: border-color 200ms ease, transform 200ms ease,
-    box-shadow 200ms ease;
+  position: relative;
+  transition: transform 220ms ease, box-shadow 220ms ease,
+    border-color 220ms ease;
 }
 
 .card:hover {
   border-color: var(--line-strong);
-  transform: translateY(-3px);
-  box-shadow: 0 16px 40px rgba(45, 38, 28, 0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 22px 42px rgba(55, 43, 21, 0.1);
 }
 
 .card__shot {
@@ -650,12 +761,16 @@ ul {
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   padding: 1.15rem 1.25rem;
-  transition: border-color 180ms ease, background-color 180ms ease;
+  position: relative;
+  transition: transform 220ms ease, box-shadow 220ms ease,
+    border-color 220ms ease, background-color 220ms ease;
 }
 
 .minicard:hover {
   border-color: var(--line-strong);
   background: rgba(255, 255, 255, 0.82);
+  transform: translateY(-4px);
+  box-shadow: 0 22px 42px rgba(55, 43, 21, 0.1);
 }
 
 .minicard__main {
@@ -699,6 +814,14 @@ ul {
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   padding: 1.25rem;
+  transition: transform 220ms ease, box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.skills__group:hover {
+  transform: translateY(-4px);
+  border-color: var(--line-strong);
+  box-shadow: 0 22px 42px rgba(55, 43, 21, 0.1);
 }
 
 .skills__label {

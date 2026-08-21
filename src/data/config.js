@@ -6,8 +6,9 @@
 export const config = {
   name: 'Akhil Mehra',
   role: 'Analytics Engineer',
-  tagline:
-    'Analytics Engineer building the data models and dashboards behind better decisions',
+  tagline: 'Building the data models and dashboards behind better decisions',
+  intro:
+    'Five years across transportation, telecom, and gaming — currently leading a 0-to-1 data warehouse build for a Toronto logistics company.',
 
   email: 'akhil.mehra2204@gmail.com',
   github: 'https://github.com/Akhilmehra22',
@@ -17,6 +18,22 @@ export const config = {
   // hero. If the file is missing, the hero falls back to initials automatically.
   headshot: '/headshot-2.jpeg',
 }
+
+// The three capability cards under the hero copy. Facts come from cv.md.
+export const highlights = [
+  {
+    title: 'Analytics & BI',
+    text: 'Certified Power BI semantic models with row-level security, powering self-serve reporting across finance, ops, sales, and leadership.',
+  },
+  {
+    title: 'Data Warehousing',
+    text: 'Kimball star schemas, SCD Types 1 and 2, surrogate keys, and conformed dimensions across seven source systems.',
+  },
+  {
+    title: 'Automation & AI',
+    text: 'Voice AI call automation, carrier scoring models wired into dispatch, and a RAG system over internal operational data.',
+  },
+]
 
 // The credentials grid shown beside the hero photo. Keep this in sync with
 // cv.md — these are the same facts, just surfaced at a glance. Leave any
