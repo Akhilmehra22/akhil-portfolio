@@ -1168,3 +1168,74 @@ ul {
   border-left: 3px solid var(--line-strong);
   color: var(--muted);
 }
+
+/* ============================================================
+   Fit Check — project assessor form
+   ============================================================ */
+.fit-check {
+  display: grid;
+  gap: 1rem;
+}
+
+.fit-check__input {
+  width: 100%;
+  resize: vertical;
+  min-height: 6.5rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface-strong);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.fit-check__input:focus {
+  outline: none;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(26, 122, 117, 0.14);
+}
+
+.fit-check__input::placeholder {
+  color: var(--muted);
+}
+
+.fit-check__foot {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.fit-check__disclaimer {
+  color: var(--muted);
+  font-size: 0.82rem;
+  max-width: 46ch;
+  line-height: 1.5;
+}
+
+.fit-check .btn--solid:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.fit-check__result {
+  padding: 1rem 1.1rem;
+  border-radius: var(--radius-md);
+  background: rgba(26, 122, 117, 0.06);
+  border: 1px solid rgba(26, 122, 117, 0.16);
+  color: var(--ink);
+  font-size: 0.98rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.fit-check__result--error {
+  background: rgba(216, 110, 75, 0.08);
+  border-color: rgba(216, 110, 75, 0.24);
+  color: var(--ink);
+}

@@ -1,5 +1,6 @@
 import useReveal from '../hooks/useReveal.js'
 import Hero from '../components/Hero.jsx'
+import FitCheck from '../components/FitCheck.jsx'
 import About from '../components/About.jsx'
 import FeaturedProjects from '../components/FeaturedProjects.jsx'
 import AllProjects from '../components/AllProjects.jsx'
@@ -13,6 +14,7 @@ export default function HomePage() {
   return (
     <main className="shell">
       <Hero />
+      <FitCheck />
       <About />
       <FeaturedProjects />
       <AllProjects />

@@ -1,6 +1,7 @@
 import { config } from '../data/config.js'
 
 const links = [
+  { href: '#fit-check', label: 'Check Fit' },
   { href: '#about', label: 'About' },
   { href: '#featured-projects', label: 'Projects' },
   { href: '#side-projects', label: 'Side Projects' },

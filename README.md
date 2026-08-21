@@ -74,10 +74,63 @@ npm run build && npm run preview
 
 Build output goes to `dist/` (gitignored).
 
+**Note:** `npm run dev` only serves the React app. The "Are We a Fit?"
+assessor calls a Netlify serverless function (`netlify/functions/assess-fit.mjs`),
+which plain `vite dev` doesn't run — see the next section to test it locally.
+
+## "Are We a Fit?" assessor (OpenAI-backed)
+
+The fit-check form on the homepage sends the visitor's brief to a serverless
+function, which calls OpenAI's API server-side so the API key never reaches
+the browser. Two things to set up:
+
+### 1. Get an OpenAI API key
+
+Create one at https://platform.openai.com/api-keys. This is billed to
+**your own** OpenAI account per request — there's no way around that, since
+the whole point of the serverless function is to keep the key private to you.
+`gpt-4o-mini` (the default) is inexpensive; a typical assessment costs a
+small fraction of a cent.
+
+### 2. Set it as an environment variable
+
+**On Netlify** (required for the live site): Site settings → Environment
+variables → add `OPENAI_API_KEY`. Optionally add `OPENAI_MODEL` to use a
+different model. Redeploy after adding it.
+
+**Locally** (optional, for testing before you deploy): copy `.env.example`
+to `.env` and fill in your key. `.env` is gitignored — never commit it.
+
+### 3. Test locally with Netlify Dev
+
+Plain `vite dev` can't run the serverless function, so use the Netlify CLI
+instead — it runs both the Vite dev server and the function together:
+
+```bash
+npm install -g netlify-cli
+netlify dev
+```
+
+This opens a local URL where the fit-check form actually calls OpenAI using
+the key in your `.env`. Without Netlify Dev (or without a key set), the form
+still renders and submits, but shows a friendly "assessor is unavailable"
+message instead of an assessment — it won't crash the page.
+
+### What it knows about you
+
+The function's system prompt (in `assess-fit.mjs`) contains a summary of your
+real background — pulled from `cv.md`, not invented. Keep the two in sync
+when your experience changes: update the `BACKGROUND` constant in the
+function to match.
+
 ## Deploy to Netlify
 
 `netlify.toml` is already configured — build command `npm run build`, publish
-directory `dist`, plus an SPA redirect.
+directory `dist`, the `netlify/functions` folder wired up, an SPA redirect,
+and a clean `/api/*` path to the fit-check function.
+
+**Don't forget:** set `OPENAI_API_KEY` in Netlify's environment variables
+(see above) — the fit-check form won't work on the live site without it.
 
 ### Option A — connect the Git repo (recommended)
 
@@ -92,8 +145,10 @@ directory `dist`, plus an SPA redirect.
 npm run build
 ```
 
-Then drag the `dist/` folder onto https://app.netlify.com/drop. No repo needed,
-but you'll re-drag on every change.
+Then drag the `dist/` folder onto https://app.netlify.com/drop. You'll
+re-drag on every change, and — same caveat as above — this method does NOT
+deploy the serverless function, so the fit-check form needs Option A
+(Git-connected) to actually work on the live site.
 
 ### Custom domain
 
