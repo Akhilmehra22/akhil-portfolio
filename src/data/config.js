@@ -9,11 +9,9 @@ export const config = {
   tagline:
     'Analytics Engineer building the data models and dashboards behind better decisions',
 
-  // --- TODO: fill these in ---------------------------------
-  email: 'TODO@example.com',                          // TODO
+  email: 'akhil.mehra2204@gmail.com',
   github: 'https://github.com/Akhilmehra22',
-  linkedin: 'https://linkedin.com/in/TODO-your-handle', // TODO
-  // ---------------------------------------------------------
+  linkedin: 'https://www.linkedin.com/in/akhilmehra2204',
 
   // Drop an image at public/ and point this at it to show a photo in the
   // hero. If the file is missing, the hero falls back to initials automatically.
