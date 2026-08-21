@@ -1,5 +1,6 @@
 import Section from './Section.jsx'
 import RepoLink from './RepoLink.jsx'
+import Carousel from './Carousel.jsx'
 import { projects } from '../data/projects.js'
 
 export default function Projects() {
@@ -14,9 +15,7 @@ export default function Projects() {
       <div className={`grid ${projects.length === 1 ? 'grid--single' : ''}`}>
         {projects.map((p) => (
           <article className="card" key={p.title}>
-            {p.image && (
-              <img className="card__shot" src={p.image} alt="" loading="lazy" />
-            )}
+            <Carousel images={p.images} alt={p.title} />
             <h3 className="card__title">{p.title}</h3>
             <p className="card__summary">{p.summary}</p>
 

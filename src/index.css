@@ -506,6 +506,77 @@ ul {
   background: #fff;
 }
 
+/* ============================================================
+   Project screenshot carousel
+   ============================================================ */
+.carousel {
+  position: relative;
+}
+
+.carousel .card__shot {
+  user-select: none;
+}
+
+.carousel__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(255, 248, 239, 0.92);
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 1rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(45, 38, 28, 0.14);
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.carousel__nav:hover {
+  background: #fff;
+  transform: translateY(-50%) scale(1.06);
+}
+
+.carousel__nav--prev {
+  left: 0.6rem;
+}
+
+.carousel__nav--next {
+  right: 0.6rem;
+}
+
+.carousel__dots {
+  position: absolute;
+  bottom: 0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(23, 32, 40, 0.35);
+}
+
+.carousel__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.carousel__dot.is-active {
+  background: #fff;
+  transform: scale(1.25);
+}
+
 .card__title {
   font-size: 1.18rem;
 }

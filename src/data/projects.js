@@ -8,7 +8,8 @@
 //    tags     string[] tech tags shown as a row of chips
 //    outcome  string   the finding or result — the payoff line
 //    repo     string   GitHub URL  (set to '' to hide the link)
-//    image    string   optional screenshot in public/ (omit for no image)
+//    images   string[] optional screenshots in public/ (omit for no image;
+//                      more than one shows next/prev arrows on the card)
 // ============================================================
 
 export const projects = [
@@ -20,7 +21,11 @@ export const projects = [
     outcome:
       'Late orders average 2.6 review stars against 4.3 for on-time orders — and roughly 73% of that lateness is carrier-caused, not seller-caused.',
     repo: 'https://github.com/Akhilmehra22/Dashboard-Analytics/tree/main/olist-delivery-performance',
-    image: '/olist-delivery-performance.png',
+    images: [
+      '/olist-delivery-performance.png',
+      '/olist-sellers-regions.png',
+      '/olist-fault-analysis.png',
+    ],
   },
 
   // ================================================================
