@@ -1,8 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom'
 
-// Brief on the card only — no screenshot here. Full detail (findings,
-// screenshots, README) lives on the /projects/:slug page. The whole card is
-// clickable, but the title and "View details" are real links too
+// A few fixed bar heights so the decorative chart motif isn't literally
+// flat/identical on every card, without needing real chart data for it.
+const BAR_HEIGHTS = ['42%', '68%', '54%', '85%']
+
+// Brief on the card only — no real screenshot here. Full detail (findings,
+// all screenshots, README) lives on the /projects/:slug page. The whole
+// card is clickable, but the title and "View details" are real links too
 // (keyboard/no-JS reachable).
 export default function ProjectCard({ project }) {
   const navigate = useNavigate()
@@ -18,9 +22,31 @@ export default function ProjectCard({ project }) {
         if (e.key === 'Enter') navigate(href)
       }}
     >
-      {project.category && (
-        <p className="card__category-label">{project.category}</p>
-      )}
+      <div className="card__preview">
+        {project.category && (
+          <span className="card__preview-label">{project.category}</span>
+        )}
+
+        <div className="card__preview-art" aria-hidden="true">
+          {BAR_HEIGHTS.map((h, i) => (
+            <span
+              key={i}
+              className="card__preview-bar"
+              style={{ height: h }}
+            />
+          ))}
+        </div>
+
+        {project.previewTags && (
+          <div className="card__preview-tags">
+            {project.previewTags.map((t) => (
+              <span key={t} className="card__preview-tag">
+                {t}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
 
       <h3 className="card__title">
         <Link to={href} onClick={(e) => e.stopPropagation()}>

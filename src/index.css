@@ -668,15 +668,70 @@ ul {
   outline-offset: 3px;
 }
 
-/* No screenshot on the card itself — just a small category label above
-   the title. The full gallery lives on the detail page. */
-.card__category-label {
+/* Decorative preview box — no real screenshot, matching the reference's
+   abstract preview art (skeleton bars / gradient shapes + keyword pills)
+   instead. Full real screenshots live on the detail page. */
+.card__preview {
+  display: grid;
+  gap: 0.55rem;
+  min-height: 6.1rem;
+  padding: 0.9rem;
+  border: 1px solid rgba(23, 32, 40, 0.08);
+  border-radius: 18px;
+  background: linear-gradient(
+      160deg,
+      rgba(26, 122, 117, 0.1),
+      rgba(197, 153, 42, 0.06)
+    ),
+    var(--surface-strong);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.48);
+}
+
+.card__preview-label {
+  justify-self: start;
   font-family: var(--display);
   font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(23, 32, 40, 0.08);
+  border-radius: 999px;
+  padding: 0.28rem 0.55rem;
+}
+
+.card__preview-art {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.35rem;
+  height: 2.4rem;
+}
+
+.card__preview-bar {
+  flex: 1;
+  border-radius: 6px 6px 2px 2px;
+  background: linear-gradient(180deg, var(--teal), rgba(26, 122, 117, 0.35));
+  opacity: 0.85;
+}
+
+.card__preview-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.card__preview-tag {
+  font-family: var(--display);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(23, 32, 40, 0.08);
+  border-radius: 999px;
+  padding: 0.24rem 0.5rem;
 }
 
 .card__shot {

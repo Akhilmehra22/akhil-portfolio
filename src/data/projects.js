@@ -9,7 +9,12 @@
 //    featured boolean  shows in the "Featured Projects" section. Every
 //                      project (featured or not) always shows in "All
 //                      Projects" too.
-//    category string   short label pill shown on the screenshot (e.g. 'BI')
+//    category string   short label pill shown on the card's decorative
+//                      preview box (e.g. 'BI & Modeling')
+//    previewTags string[]  2-3 short domain keywords shown as small pills
+//                      inside the preview box — distinct from `tags` below
+//                      (those are tech stack; these are what-it's-about,
+//                      e.g. 'Late Delivery', 'Review Score')
 //    meta     string   small uppercase line in the card footer (e.g. 'Updated Aug 2026')
 //    summary  string   one line: what it is and why it exists — this is ALL
 //                      the card shows. Full detail lives in `findings`/
@@ -34,6 +39,7 @@ export const projects = [
     title: 'Delivery Performance & Review Impact Analysis',
     featured: true,
     category: 'BI & Modeling',
+    previewTags: ['Late Delivery', 'Review Score', 'Carrier Fault'],
     meta: 'Updated Aug 2026',
     summary:
       'A Kimball star schema and a three-page Power BI dashboard diagnosing where late delivery hurts customer satisfaction on a Brazilian e-commerce marketplace — and whose fault the lateness actually is.',
