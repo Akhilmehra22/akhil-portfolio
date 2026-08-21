@@ -4,6 +4,8 @@
 //
 //  Shape:
 //    title    string   project name
+//    category string   short label pill shown on the screenshot (e.g. 'BI')
+//    meta     string   small uppercase line in the card footer (e.g. 'Updated Aug 2026')
 //    summary  string   one line: what it is and why it exists
 //    tags     string[] tech tags shown as a row of chips
 //    findings { label, text }[]  key findings, each with a short label and
@@ -18,6 +20,8 @@
 export const projects = [
   {
     title: 'Delivery Performance & Review Impact Analysis',
+    category: 'BI & Modeling',
+    meta: 'Updated Aug 2026',
     summary:
       'Built a Kimball star schema in SQL Server and a three-page Power BI dashboard diagnosing where late delivery hurts customer satisfaction on a Brazilian e-commerce marketplace, and, critically, whose fault the lateness actually is.',
     tags: ['SQL Server', 'Power BI', 'DAX', 'Dimensional Modeling', 'Kimball'],

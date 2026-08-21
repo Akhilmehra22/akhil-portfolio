@@ -15,7 +15,15 @@ export default function Projects() {
       <div className={`grid ${projects.length === 1 ? 'grid--single' : ''}`}>
         {projects.map((p) => (
           <article className="card" key={p.title}>
-            <Carousel images={p.images} alt={p.title} />
+            {p.images && (
+              <div className="card__preview">
+                <Carousel images={p.images} alt={p.title} />
+                {p.category && (
+                  <span className="card__category">{p.category}</span>
+                )}
+              </div>
+            )}
+
             <h3 className="card__title">{p.title}</h3>
             <p className="card__summary">{p.summary}</p>
 
@@ -48,7 +56,8 @@ export default function Projects() {
             )}
 
             <div className="card__foot">
-              <RepoLink url={p.repo} />
+              {p.meta && <span className="card__meta">{p.meta}</span>}
+              <RepoLink url={p.repo} label="Open project" variant="link" />
             </div>
           </article>
         ))}
