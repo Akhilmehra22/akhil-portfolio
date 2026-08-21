@@ -6,7 +6,6 @@
 // local .env file for `netlify dev`. See README.md for the full setup.
 
 import { readFileSync } from 'node:fs'
-import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 
 const MODEL = process.env.OPENAI_MODEL || 'gpt-4o-mini'
@@ -17,9 +16,19 @@ const MAX_BRIEF_LENGTH = 2000
 // It's small enough to read whole; no chunking/embedding needed. Listed in
 // netlify.toml's `included_files` so it ships alongside the bundled
 // function (esbuild only bundles JS by default).
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
+//
+// Deliberately NOT using import.meta.url/fileURLToPath here: Netlify's
+// production bundler compiles this .mjs to CommonJS, where import.meta is
+// empty, and fileURLToPath(undefined) throws at cold start (every request
+// 500s, before the API key check even runs). LAMBDA_TASK_ROOT is the
+// deployed function's actual root and survives that compilation; falling
+// back to process.cwd() covers `netlify dev` and local testing, where
+// LAMBDA_TASK_ROOT isn't set but the CLI runs from the repo root.
+const FUNCTIONS_ROOT = process.env.LAMBDA_TASK_ROOT
+  ? path.join(process.env.LAMBDA_TASK_ROOT, 'netlify/functions')
+  : path.join(process.cwd(), 'netlify/functions')
 const BACKGROUND = readFileSync(
-  path.join(__dirname, 'background.md'),
+  path.join(FUNCTIONS_ROOT, 'background.md'),
   'utf-8'
 ).trim()
 
