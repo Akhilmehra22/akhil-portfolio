@@ -3,27 +3,40 @@
 //  Nothing else in the codebase needs to change.
 //
 //  Shape:
+//    slug     string   URL segment for the detail page: /projects/{slug}
+//                      (lowercase, hyphenated, unique)
 //    title    string   project name
+//    featured boolean  shows in the "Featured Projects" section. Every
+//                      project (featured or not) always shows in "All
+//                      Projects" too.
 //    category string   short label pill shown on the screenshot (e.g. 'BI')
 //    meta     string   small uppercase line in the card footer (e.g. 'Updated Aug 2026')
-//    summary  string   one line: what it is and why it exists
+//    summary  string   one line: what it is and why it exists — this is ALL
+//                      the card shows. Full detail lives in `findings`/
+//                      `outcome` below, which render only on the detail page.
 //    tags     string[] tech tags shown as a row of chips
 //    findings { label, text }[]  key findings, each with a short label and
-//                      one sentence — rendered as a list under "Key Findings"
+//                      one sentence — rendered as a list on the detail page
 //                      (use this OR outcome, not both)
 //    outcome  string   single payoff line — simpler alternative to findings
 //    repo     string   GitHub URL  (set to '' to hide the link)
+//    readme   string   raw README URL (raw.githubusercontent.com/...) —
+//                      fetched and rendered on the detail page. Omit to
+//                      skip the README section.
 //    images   string[] optional screenshots in public/ (omit for no image;
-//                      more than one shows next/prev arrows on the card)
+//                      more than one shows next/prev arrows on the card and
+//                      the detail page)
 // ============================================================
 
 export const projects = [
   {
+    slug: 'delivery-performance-review-impact',
     title: 'Delivery Performance & Review Impact Analysis',
+    featured: true,
     category: 'BI & Modeling',
     meta: 'Updated Aug 2026',
     summary:
-      'Built a Kimball star schema in SQL Server and a three-page Power BI dashboard diagnosing where late delivery hurts customer satisfaction on a Brazilian e-commerce marketplace, and, critically, whose fault the lateness actually is.',
+      'A Kimball star schema and a three-page Power BI dashboard diagnosing where late delivery hurts customer satisfaction on a Brazilian e-commerce marketplace — and whose fault the lateness actually is.',
     tags: ['SQL Server', 'Power BI', 'DAX', 'Dimensional Modeling', 'Kimball'],
     findings: [
       {
@@ -40,6 +53,8 @@ export const projects = [
       },
     ],
     repo: 'https://github.com/Akhilmehra22/Dashboard-Analytics/tree/main/olist-delivery-performance',
+    readme:
+      'https://raw.githubusercontent.com/Akhilmehra22/Dashboard-Analytics/main/olist-delivery-performance/Readme.md',
     images: [
       '/olist-delivery-performance.png',
       '/olist-sellers-regions.png',
@@ -53,22 +68,32 @@ export const projects = [
   //  looks worse than no card at all.
   // ================================================================
   // {
+  //   slug: '',
   //   title: '',
+  //   featured: false,
+  //   category: '',
+  //   meta: '',
   //   summary: '',
   //   tags: ['', '', ''],
   //   outcome: '',
   //   repo: '',
+  //   readme: '',
   // },
 
   // ================================================================
   //  SLOT 3 — same deal.
   // ================================================================
   // {
+  //   slug: '',
   //   title: '',
+  //   featured: false,
+  //   category: '',
+  //   meta: '',
   //   summary: '',
   //   tags: ['', '', ''],
   //   outcome: '',
   //   repo: '',
+  //   readme: '',
   // },
 ]
 

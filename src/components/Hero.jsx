@@ -52,15 +52,10 @@ export default function Hero() {
           <p className="hero__intro">{config.intro}</p>
 
           <div className="hero__actions">
-            <a className="btn btn--solid" href="#projects">
+            <a className="btn btn--solid" href="#featured-projects">
               View Featured Work
             </a>
-            <a
-              className="btn"
-              href={config.github}
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a className="btn" href="#all-projects">
               All Projects
             </a>
             <a className="btn" href={`mailto:${config.email}`}>

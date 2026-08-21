@@ -1,27 +1,19 @@
-import useReveal from './hooks/useReveal.js'
+import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header.jsx'
-import Hero from './components/Hero.jsx'
-import About from './components/About.jsx'
-import Projects from './components/Projects.jsx'
-import SideProjects from './components/SideProjects.jsx'
-import Skills from './components/Skills.jsx'
-import Connect from './components/Connect.jsx'
 import Footer from './components/Footer.jsx'
+import HomePage from './pages/HomePage.jsx'
+import ProjectDetailPage from './pages/ProjectDetailPage.jsx'
+import ScrollToTop from './components/ScrollToTop.jsx'
 
 export default function App() {
-  useReveal()
-
   return (
     <>
+      <ScrollToTop />
       <Header />
-      <main className="shell">
-        <Hero />
-        <About />
-        <Projects />
-        <SideProjects />
-        <Skills />
-        <Connect />
-      </main>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/projects/:slug" element={<ProjectDetailPage />} />
+      </Routes>
       <Footer />
     </>
   )

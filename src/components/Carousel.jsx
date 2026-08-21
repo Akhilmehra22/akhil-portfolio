@@ -28,7 +28,10 @@ export default function Carousel({ images, alt }) {
       <button
         type="button"
         className="carousel__nav carousel__nav--prev"
-        onClick={() => go(-1)}
+        onClick={(e) => {
+          e.stopPropagation()
+          go(-1)
+        }}
         aria-label="Previous screenshot"
       >
         &larr;
@@ -36,13 +39,21 @@ export default function Carousel({ images, alt }) {
       <button
         type="button"
         className="carousel__nav carousel__nav--next"
-        onClick={() => go(1)}
+        onClick={(e) => {
+          e.stopPropagation()
+          go(1)
+        }}
         aria-label="Next screenshot"
       >
         &rarr;
       </button>
 
-      <div className="carousel__dots" role="tablist" aria-label="Screenshots">
+      <div
+        className="carousel__dots"
+        role="tablist"
+        aria-label="Screenshots"
+        onClick={(e) => e.stopPropagation()}
+      >
         {images.map((img, i) => (
           <button
             key={img}
