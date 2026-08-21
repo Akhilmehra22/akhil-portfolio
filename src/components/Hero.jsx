@@ -30,7 +30,7 @@ export default function Hero() {
                 <span className="hero__initials">{initials(config.name)}</span>
               )}
             </div>
-            <div>
+            <div className="profile-panel__identity">
               <p className="profile-panel__name">{config.name}</p>
               <a
                 className="profile-panel__link"
