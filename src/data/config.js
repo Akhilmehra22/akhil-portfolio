@@ -15,9 +15,9 @@ export const config = {
   linkedin: 'https://linkedin.com/in/TODO-your-handle', // TODO
   // ---------------------------------------------------------
 
-  // Drop a square image at public/headshot.jpg to show a photo.
-  // If the file is missing, the hero falls back to initials automatically.
-  headshot: '/headshot.jpg',
+  // Drop an image at public/ and point this at it to show a photo in the
+  // hero. If the file is missing, the hero falls back to initials automatically.
+  headshot: '/headshot.jpeg',
 }
 
 export const about = [
