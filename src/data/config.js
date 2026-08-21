@@ -15,7 +15,7 @@ export const config = {
 
   // Drop an image at public/ and point this at it to show a photo in the
   // hero. If the file is missing, the hero falls back to initials automatically.
-  headshot: '/headshot.jpeg',
+  headshot: '/headshot-2.jpeg',
 }
 
 // The credentials grid shown beside the hero photo. Keep this in sync with
