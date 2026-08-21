@@ -28,21 +28,28 @@ export const credentials = {
     title: 'Analytics Engineer',
     org: 'Titanium Transportation Group',
     url: '', // TODO: company site, optional
+    logo: '/logos/titanium.png',
   },
   previousRole: {
     title: 'Data Consultant',
+    // Employer was QNE Software; logo shown is the client, TELUS Digital
+    // (rebranded from TELUS International) — QNE has no public logo asset
+    // to source reliably. Swap `logo` below if you'd rather show QNE.
     org: 'QNE Software (Client: Telus International)',
     url: '', // TODO: company site, optional
+    logo: '/logos/telus.png',
   },
   earlierRole: {
     title: 'Data Analyst',
     org: 'PokerBaazi (Baazi Games)',
     url: '', // TODO: company site, optional
+    logo: '/logos/pokerbaazi.png',
   },
   education: {
     program: 'Business Analytics',
     school: 'St. Lawrence College',
     url: '', // TODO: program page, optional
+    logo: '/logos/stlawrence.png',
   },
   experience: {
     stat: '5+ years',

@@ -319,6 +319,24 @@ ul {
   grid-column: 1 / -1;
 }
 
+.cred__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.6rem;
+}
+
+.cred__logo {
+  width: 26px;
+  height: 26px;
+  flex: none;
+  object-fit: contain;
+  border-radius: 7px;
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 3px;
+}
+
 .cred__eyebrow {
   font-family: var(--display);
   font-size: 0.66rem;
