@@ -605,6 +605,29 @@ ul {
   margin-bottom: 0.35rem;
 }
 
+.card__findings {
+  background: rgba(26, 122, 117, 0.06);
+  border: 1px solid rgba(26, 122, 117, 0.16);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1rem;
+}
+
+.card__findings ul {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.card__findings li {
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+
+.card__findings li strong {
+  font-family: var(--display);
+  font-weight: 700;
+  color: var(--ink);
+}
+
 .card__foot {
   margin-top: auto;
   padding-top: 0.2rem;

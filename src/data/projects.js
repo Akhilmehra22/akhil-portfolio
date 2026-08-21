@@ -6,7 +6,10 @@
 //    title    string   project name
 //    summary  string   one line: what it is and why it exists
 //    tags     string[] tech tags shown as a row of chips
-//    outcome  string   the finding or result — the payoff line
+//    findings { label, text }[]  key findings, each with a short label and
+//                      one sentence — rendered as a list under "Key Findings"
+//                      (use this OR outcome, not both)
+//    outcome  string   single payoff line — simpler alternative to findings
 //    repo     string   GitHub URL  (set to '' to hide the link)
 //    images   string[] optional screenshots in public/ (omit for no image;
 //                      more than one shows next/prev arrows on the card)
@@ -16,10 +19,22 @@ export const projects = [
   {
     title: 'Delivery Performance & Review Impact Analysis',
     summary:
-      'A Kimball star schema in SQL Server and a 3-page Power BI dashboard diagnosing where late delivery hurts customer satisfaction on a Brazilian e-commerce marketplace.',
+      'Built a Kimball star schema in SQL Server and a three-page Power BI dashboard diagnosing where late delivery hurts customer satisfaction on a Brazilian e-commerce marketplace, and, critically, whose fault the lateness actually is.',
     tags: ['SQL Server', 'Power BI', 'DAX', 'Dimensional Modeling', 'Kimball'],
-    outcome:
-      'Late orders average 2.6 review stars against 4.3 for on-time orders — and roughly 73% of that lateness is carrier-caused, not seller-caused.',
+    findings: [
+      {
+        label: 'The satisfaction collapse',
+        text: 'Late orders average 2.6 review stars against 4.3 for on-time orders. It’s a satisfaction killer, not a mild dip.',
+      },
+      {
+        label: 'The real bottleneck',
+        text: "Only 27% of late deliveries are the seller's fault (missing their shipping deadline). 73% stem from carrier transit time, meaning the biggest operational lever is logistics, not seller coaching.",
+      },
+      {
+        label: 'Geographic concentration',
+        text: 'Delays heavily concentrate in northeastern states (e.g., Alagoas at ~24%), consistent with the transit distance from the main seller base.',
+      },
+    ],
     repo: 'https://github.com/Akhilmehra22/Dashboard-Analytics/tree/main/olist-delivery-performance',
     images: [
       '/olist-delivery-performance.png',

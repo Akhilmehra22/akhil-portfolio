@@ -27,10 +27,25 @@ export default function Projects() {
               ))}
             </ul>
 
-            <p className="card__outcome">
-              <span className="card__outcome-label">Finding</span>
-              {p.outcome}
-            </p>
+            {p.findings ? (
+              <div className="card__findings">
+                <p className="card__outcome-label">Key Findings</p>
+                <ul>
+                  {p.findings.map((f) => (
+                    <li key={f.label}>
+                      <strong>{f.label}:</strong> {f.text}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              p.outcome && (
+                <p className="card__outcome">
+                  <span className="card__outcome-label">Finding</span>
+                  {p.outcome}
+                </p>
+              )
+            )}
 
             <div className="card__foot">
               <RepoLink url={p.repo} />
