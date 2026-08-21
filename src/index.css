@@ -638,8 +638,8 @@ ul {
 .card {
   display: flex;
   flex-direction: column;
-  gap: 0.95rem;
-  min-height: 21.5rem;
+  gap: 0.7rem;
+  min-height: 14rem;
   background: linear-gradient(
       180deg,
       rgba(255, 255, 255, 0.76),
@@ -670,45 +670,15 @@ ul {
   outline-offset: 3px;
 }
 
-/* Fixed-height thumbnail strip — the reference uses a compact decorative
-   preview box (~6-7rem), not a full uncropped screenshot. A real dashboard
-   screenshot is much taller than that, so it gets cropped to match. */
-.card__preview {
-  position: relative;
-  height: 150px;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid rgba(23, 32, 40, 0.08);
-  background: #fff;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.48);
-}
-
-.card__category {
-  position: absolute;
-  top: 0.6rem;
-  left: 0.6rem;
+/* No screenshot on the card itself — just a small category label above
+   the title. The full gallery lives on the detail page. */
+.card__category-label {
   font-family: var(--display);
   font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink);
-  background: rgba(255, 255, 255, 0.86);
-  border: 1px solid rgba(23, 32, 40, 0.08);
-  border-radius: 999px;
-  padding: 0.28rem 0.55rem;
-  backdrop-filter: blur(4px);
-  z-index: 1;
-}
-
-.card__preview .card__shot {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
+  color: var(--teal);
 }
 
 .card__shot {

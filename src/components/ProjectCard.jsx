@@ -1,11 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom'
-import Carousel from './Carousel.jsx'
 
-// Brief on the card; full detail (findings, README, all screenshots) lives
-// on the /projects/:slug page. The whole card is clickable, but the title
-// and "View details" are real links too (keyboard/no-JS reachable). The
-// carousel's own buttons stop propagation so paging screenshots doesn't
-// also navigate away.
+// Brief on the card only — no screenshot here. Full detail (findings,
+// screenshots, README) lives on the /projects/:slug page. The whole card is
+// clickable, but the title and "View details" are real links too
+// (keyboard/no-JS reachable).
 export default function ProjectCard({ project }) {
   const navigate = useNavigate()
   const href = `/projects/${project.slug}`
@@ -20,13 +18,8 @@ export default function ProjectCard({ project }) {
         if (e.key === 'Enter') navigate(href)
       }}
     >
-      {project.images && (
-        <div className="card__preview">
-          <Carousel images={project.images} alt={project.title} />
-          {project.category && (
-            <span className="card__category">{project.category}</span>
-          )}
-        </div>
+      {project.category && (
+        <p className="card__category-label">{project.category}</p>
       )}
 
       <h3 className="card__title">

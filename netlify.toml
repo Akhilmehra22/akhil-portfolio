@@ -3,6 +3,12 @@
   publish = "dist"
   functions = "netlify/functions"
 
+# The bundler only ships JS by default — without this, background.md (read
+# via fs at runtime by assess-fit.mjs) would work under `netlify dev` but
+# 404 once actually deployed.
+[functions]
+  included_files = ["netlify/functions/*.md"]
+
 # Clean path for the fit-assessor call — proxies to the serverless
 # function below. Must come before the SPA catch-all.
 [[redirects]]
