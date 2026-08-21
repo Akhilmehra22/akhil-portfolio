@@ -234,7 +234,7 @@ ul {
    ============================================================ */
 .hero__main {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(22rem, 0.9fr);
+  grid-template-columns: minmax(22rem, 0.9fr) minmax(0, 1.1fr);
   gap: 1.4rem;
   align-items: start;
 }

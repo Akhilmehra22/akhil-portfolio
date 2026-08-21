@@ -17,6 +17,35 @@ export default function Hero() {
   return (
     <section className="hero reveal is-visible" id="top">
       <div className="hero__main">
+        <aside className="profile-panel lift">
+          <div className="profile-panel__head">
+            <div className="hero__avatar">
+              {imgOk ? (
+                <img
+                  src={config.headshot}
+                  alt={config.name}
+                  onError={() => setImgOk(false)}
+                />
+              ) : (
+                <span className="hero__initials">{initials(config.name)}</span>
+              )}
+            </div>
+            <div>
+              <p className="profile-panel__name">{config.name}</p>
+              <a
+                className="profile-panel__link"
+                href={config.linkedin}
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn &rarr;
+              </a>
+            </div>
+          </div>
+
+          <Credentials />
+        </aside>
+
         <div className="hero__copy">
           <h1 className="hero__role-title">{config.role}</h1>
           <p className="hero__tagline">{config.tagline}</p>
@@ -48,35 +77,6 @@ export default function Hero() {
             ))}
           </div>
         </div>
-
-        <aside className="profile-panel lift">
-          <div className="profile-panel__head">
-            <div className="hero__avatar">
-              {imgOk ? (
-                <img
-                  src={config.headshot}
-                  alt={config.name}
-                  onError={() => setImgOk(false)}
-                />
-              ) : (
-                <span className="hero__initials">{initials(config.name)}</span>
-              )}
-            </div>
-            <div>
-              <p className="profile-panel__name">{config.name}</p>
-              <a
-                className="profile-panel__link"
-                href={config.linkedin}
-                target="_blank"
-                rel="noreferrer"
-              >
-                LinkedIn &rarr;
-              </a>
-            </div>
-          </div>
-
-          <Credentials />
-        </aside>
       </div>
     </section>
   )
