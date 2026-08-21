@@ -1112,12 +1112,16 @@ ul {
 .project-detail {
   display: grid;
   gap: 1.15rem;
-  max-width: 780px;
+  max-width: 940px;
   margin: 0 auto;
 }
 
 .project-detail .eyebrow {
   margin-top: 0.5rem;
+  /* .eyebrow's own margin-bottom would stack on top of the grid's gap
+     (margins don't collapse against grid-gap), doubling the space before
+     the title. The gap alone is enough. */
+  margin-bottom: 0;
 }
 
 .project-detail__gallery {

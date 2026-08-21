@@ -26,7 +26,7 @@ export default function FitCheck() {
 
       if (!res.ok) {
         setStatus('error')
-        setResult(data.error || 'Something went wrong — please try again.')
+        setResult(data.error || 'Something went wrong. Please try again.')
         return
       }
 
@@ -34,7 +34,7 @@ export default function FitCheck() {
       setResult(data.assessment)
     } catch {
       setStatus('error')
-      setResult('Couldn’t reach the assessor — check your connection and try again.')
+      setResult('Couldn’t reach the assessor. Check your connection and try again.')
     }
   }
 

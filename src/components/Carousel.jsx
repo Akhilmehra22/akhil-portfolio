@@ -21,7 +21,7 @@ export default function Carousel({ images, alt }) {
       <img
         className="card__shot"
         src={images[index]}
-        alt={`${alt} — screenshot ${index + 1} of ${images.length}`}
+        alt={`${alt}, screenshot ${index + 1} of ${images.length}`}
         loading="lazy"
       />
 

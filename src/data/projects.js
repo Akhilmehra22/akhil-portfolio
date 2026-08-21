@@ -42,7 +42,7 @@ export const projects = [
     previewTags: ['Late Delivery', 'Review Score', 'Carrier Fault'],
     meta: 'Updated Aug 2026',
     summary:
-      'A Kimball star schema and a three-page Power BI dashboard diagnosing where late delivery hurts customer satisfaction on a Brazilian e-commerce marketplace — and whose fault the lateness actually is.',
+      'A Kimball star schema and a three-page Power BI dashboard diagnosing where late delivery hurts customer satisfaction on a Brazilian e-commerce marketplace, and whose fault the lateness actually is.',
     tags: ['SQL Server', 'Power BI', 'DAX', 'Dimensional Modeling', 'Kimball'],
     findings: [
       {

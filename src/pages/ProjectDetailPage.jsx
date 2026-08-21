@@ -120,7 +120,7 @@ export default function ProjectDetailPage() {
             )}
             {readme.status === 'error' && (
               <p className="hero__intro">
-                Couldn’t load the README right now — see it directly on{' '}
+                Couldn’t load the README right now. See it directly on{' '}
                 <a href={project.repo} target="_blank" rel="noreferrer">
                   GitHub
                 </a>

@@ -11,7 +11,7 @@ export default function FeaturedProjects() {
       id="featured-projects"
       label="Featured Projects"
       title="Selected work"
-      lede="A short list of the analyses I'd lead with — the rest live in All Projects below."
+      lede="A short list of the analyses I'd lead with. The rest live in All Projects below."
     >
       <div className="grid">
         {featured.map((p) => (
