@@ -4,7 +4,7 @@ const links = [
   { href: '#about', label: 'About' },
   { href: '#featured-projects', label: 'Projects' },
   { href: '#side-projects', label: 'Side Projects' },
-  { href: '#skills', label: 'Skills' },
+  { href: '#skills', label: 'Toolkit' },
 ]
 
 function GithubIcon() {
@@ -48,6 +48,9 @@ export default function Header() {
               {l.label}
             </a>
           ))}
+          <a className="site-nav-cta" href="#connect">
+            Connect
+          </a>
           <a
             className="site-nav__icon"
             href={config.github}
@@ -65,9 +68,6 @@ export default function Header() {
             aria-label="LinkedIn"
           >
             <LinkedinIcon />
-          </a>
-          <a className="site-nav-cta" href="#connect">
-            Connect
           </a>
         </nav>
       </div>

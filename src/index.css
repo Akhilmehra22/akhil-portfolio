@@ -224,8 +224,12 @@ ul {
   margin-bottom: 0.7rem;
 }
 
+/* Section titles use the serif, matching the reference (its h1 hero title
+   stays on the display face — only h2-level section titles switch). */
 .panel__title {
+  font-family: var(--serif);
   font-size: clamp(1.5rem, 3.4vw, 1.9rem);
+  letter-spacing: normal;
 }
 
 .panel__head {
@@ -366,10 +370,10 @@ ul {
 }
 
 .profile-panel__name {
-  font-family: var(--display);
+  font-family: var(--serif);
   font-size: 1.25rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: normal;
 }
 
 .profile-panel__link {
@@ -666,8 +670,17 @@ ul {
   outline-offset: 3px;
 }
 
+/* Fixed-height thumbnail strip — the reference uses a compact decorative
+   preview box (~6-7rem), not a full uncropped screenshot. A real dashboard
+   screenshot is much taller than that, so it gets cropped to match. */
 .card__preview {
   position: relative;
+  height: 150px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(23, 32, 40, 0.08);
+  background: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.48);
 }
 
 .card__category {
@@ -685,6 +698,17 @@ ul {
   border-radius: 999px;
   padding: 0.28rem 0.55rem;
   backdrop-filter: blur(4px);
+  z-index: 1;
+}
+
+.card__preview .card__shot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .card__shot {
@@ -701,6 +725,7 @@ ul {
    ============================================================ */
 .carousel {
   position: relative;
+  height: 100%;
 }
 
 .carousel .card__shot {
@@ -946,13 +971,38 @@ ul {
 }
 
 .skills__label {
-  font-family: var(--display);
-  font-size: 0.72rem;
+  font-family: var(--serif);
+  font-size: 1.15rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--muted);
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--ink);
   margin-bottom: 0.85rem;
+}
+
+/* Wider, left-aligned boxes instead of small pill chips — matches the
+   reference's toolkit cards. */
+.skills__items {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.skills__item {
+  width: 100%;
+  min-height: 2.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgba(23, 32, 40, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.62);
+  font-family: var(--display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ink);
 }
 
 /* ============================================================
