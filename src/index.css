@@ -413,9 +413,9 @@ ul {
 }
 
 .hero__avatar {
-  width: 92px;
-  height: 112px;
-  border-radius: 20px;
+  width: 128px;
+  height: 156px;
+  border-radius: 22px;
   overflow: hidden;
   flex: none;
   background: var(--surface-strong);
