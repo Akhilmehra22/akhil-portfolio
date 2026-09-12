@@ -6,7 +6,7 @@
 export const config = {
   name: 'Akhil Mehra',
   role: 'Analytics Engineer',
-  tagline: 'Building the data models and dashboards behind better decisions',
+  tagline: 'SQL and dimensional modeling behind the dashboards businesses run on',
   intro:
     'Five years across transportation, telecom, and gaming, currently leading a 0-to-1 data warehouse build for a Toronto logistics company.',
 

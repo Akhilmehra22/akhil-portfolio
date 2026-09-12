@@ -9,9 +9,9 @@ export default function FeaturedProjects() {
   return (
     <Section
       id="featured-projects"
-      label="Featured Projects"
-      title="Selected work"
-      lede="A short list of the analyses I'd lead with. The rest live in All Projects below."
+      label="Professional Work"
+      title="Analytics & data engineering"
+      lede="The analytics and modeling work I'd lead with. My passion projects, built with AI, are further down."
     >
       <div className="grid">
         {featured.map((p) => (

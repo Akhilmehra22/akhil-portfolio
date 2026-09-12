@@ -7,12 +7,13 @@ export default function FitCheck() {
   const [brief, setBrief] = useState('')
   const [status, setStatus] = useState('idle') // idle | loading | done | error
   const [result, setResult] = useState('')
+  const [activeMode, setActiveMode] = useState(null) // 'professional' | 'collaborator'
 
-  const submit = async (e) => {
-    e.preventDefault()
+  const submit = async (mode) => {
     const trimmed = brief.trim()
     if (!trimmed || status === 'loading') return
 
+    setActiveMode(mode)
     setStatus('loading')
     setResult('')
 
@@ -20,7 +21,7 @@ export default function FitCheck() {
       const res = await fetch('/api/assess-fit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ brief: trimmed }),
+        body: JSON.stringify({ brief: trimmed, mode }),
       })
       const data = await res.json()
 
@@ -38,45 +39,70 @@ export default function FitCheck() {
     }
   }
 
+  const loading = status === 'loading'
+  const disabled = !brief.trim() || loading
+
   return (
     <Section
       id="fit-check"
-      label="Project Assessor"
+      label="Ask About Akhil"
       title="Are We a Fit?"
-      lede="Describe the project or data challenge you're trying to solve. This assistant evaluates your brief against my background in analytics engineering, BI, and data infrastructure to see if my skillset matches your needs."
+      lede="Describe your project, your team, or the kind of person you're looking for. Then choose how you'd like to size Akhil up: as the professional who does the work, or as the teammate who does it alongside you."
     >
-      <form className="fit-check" onSubmit={submit}>
+      <form className="fit-check" onSubmit={(e) => e.preventDefault()}>
         <textarea
           className="fit-check__input"
           value={brief}
           maxLength={MAX_LENGTH}
           onChange={(e) => setBrief(e.target.value)}
           placeholder={
-            'Describe your project (e.g., "I need a Kimball-style data warehouse built from scratch," or "Looking for someone to automate our reporting and build Power BI dashboards...")'
+            'Describe your project or team (e.g., "We need a Kimball-style data warehouse and self-serve Power BI," or "We\'re a small analytics team that ships fast and needs someone who can own problems end to end...")'
           }
           rows={4}
         />
 
-        <div className="fit-check__foot">
-          <p className="fit-check__disclaimer">
-            Prompts are processed by OpenAI to generate your assessment.
-            Please don’t share sensitive company data or personal
-            information.
-          </p>
+        <div className="fit-check__actions">
           <button
             className="btn btn--solid"
-            type="submit"
-            disabled={!brief.trim() || status === 'loading'}
+            type="button"
+            onClick={() => submit('professional')}
+            disabled={disabled}
           >
-            {status === 'loading' ? 'Assessing…' : 'Assess Project Fit'}
+            {loading && activeMode === 'professional'
+              ? 'Assessing…'
+              : 'Assess the Professional'}
+          </button>
+          <button
+            className="btn btn--solid fit-check__btn-alt"
+            type="button"
+            onClick={() => submit('collaborator')}
+            disabled={disabled}
+          >
+            {loading && activeMode === 'collaborator'
+              ? 'Assessing…'
+              : 'Assess the Collaborator'}
           </button>
         </div>
+
+        <p className="fit-check__disclaimer">
+          The professional view weighs skills and experience; the collaborator
+          view weighs how Akhil works with a team, takes ownership, and learns.
+          Prompts are processed by OpenAI. Please don’t share sensitive company
+          data or personal information.
+        </p>
 
         {result && (
           <div
             className={`fit-check__result ${status === 'error' ? 'fit-check__result--error' : ''}`}
             role="status"
           >
+            {status === 'done' && activeMode && (
+              <p className="fit-check__result-label">
+                {activeMode === 'collaborator'
+                  ? 'As a collaborator'
+                  : 'As a professional'}
+              </p>
+            )}
             {result}
           </div>
         )}

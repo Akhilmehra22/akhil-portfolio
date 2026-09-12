@@ -8,7 +8,7 @@
   --header: rgba(255, 248, 236, 0.76);
 
   --ink: #172028;
-  --muted: #576169;
+  --muted: #333c44;
   --line: rgba(23, 32, 40, 0.12);
   --line-strong: rgba(23, 32, 40, 0.18);
   --hairline-light: rgba(255, 255, 255, 0.5);
@@ -235,12 +235,12 @@ ul {
 
 .eyebrow {
   font-family: var(--display);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-size: 0.98rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 0.7rem;
+  color: var(--teal);
+  margin-bottom: 0.8rem;
 }
 
 /* Section titles use the serif, matching the reference (its h1 hero title
@@ -258,7 +258,8 @@ ul {
 
 .panel__lede {
   margin-top: 0.75rem;
-  color: var(--muted);
+  color: #2b333b;
+  font-size: 1.02rem;
 }
 
 /* Reveal on scroll */
@@ -614,6 +615,28 @@ ul {
   border-color: #16645f;
 }
 
+.back-btn {
+  font-size: 0.95rem;
+  padding: 0.7rem 1.25rem;
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #fff8ef;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 6px 16px rgba(26, 122, 117, 0.25);
+}
+
+.back-btn span {
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.back-btn:hover {
+  background: #16645f;
+  border-color: #16645f;
+  transform: translateX(-3px);
+}
+
 .btn--quiet {
   background: rgba(255, 255, 255, 0.6);
   border-color: var(--line);
@@ -784,24 +807,26 @@ ul {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 34px;
-  height: 34px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
-  border: 1px solid var(--line);
-  background: rgba(255, 248, 239, 0.92);
-  color: var(--ink);
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  background: rgba(23, 32, 40, 0.82);
+  color: #fff;
   font-family: var(--display);
-  font-size: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
   display: grid;
   place-items: center;
   cursor: pointer;
-  box-shadow: 0 6px 16px rgba(45, 38, 28, 0.14);
+  box-shadow: 0 8px 22px rgba(45, 38, 28, 0.32);
   transition: background-color 160ms ease, transform 160ms ease;
 }
 
 .carousel__nav:hover {
-  background: #fff;
-  transform: translateY(-50%) scale(1.06);
+  background: var(--teal);
+  transform: translateY(-50%) scale(1.1);
 }
 
 .carousel__nav--prev {
@@ -825,19 +850,19 @@ ul {
 }
 
 .carousel__dot {
-  width: 6px;
-  height: 6px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   border: none;
   padding: 0;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.55);
   cursor: pointer;
   transition: background-color 160ms ease, transform 160ms ease;
 }
 
 .carousel__dot.is-active {
   background: #fff;
-  transform: scale(1.25);
+  transform: scale(1.4);
 }
 
 /* Card titles use the serif, not the display face — matches the reference,
@@ -849,8 +874,9 @@ ul {
 }
 
 .card__summary {
-  color: var(--muted);
-  font-size: 0.98rem;
+  color: #1e262e;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 .card__outcome {
@@ -1131,6 +1157,24 @@ ul {
 .project-detail__gallery .card__shot {
   max-height: 480px;
   object-fit: contain;
+  transition: max-height 260ms ease, transform 260ms ease;
+}
+
+.card__shot--expandable {
+  cursor: zoom-in;
+}
+
+.project-detail__gallery .card__shot--expandable.is-zoomed {
+  max-height: 760px;
+  cursor: zoom-out;
+}
+
+.project-detail__overview {
+  color: #1e262e;
+  font-size: 1.06rem;
+  line-height: 1.65;
+  max-width: 68ch;
+  margin-top: 0.25rem;
 }
 
 .project-detail__readme {
@@ -1261,19 +1305,43 @@ ul {
   color: var(--muted);
 }
 
-.fit-check__foot {
+.fit-check__actions {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1.25rem;
   flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.fit-check__actions .btn {
+  font-size: 0.9rem;
+  padding: 0.7rem 1.2rem;
+}
+
+/* Second button in a distinct accent so the two modes read as a choice */
+.fit-check__btn-alt {
+  background: var(--coral);
+  border-color: var(--coral);
+}
+
+.fit-check__btn-alt:hover:not(:disabled) {
+  background: #c1572f;
+  border-color: #c1572f;
 }
 
 .fit-check__disclaimer {
   color: var(--muted);
   font-size: 0.82rem;
-  max-width: 46ch;
+  max-width: 60ch;
   line-height: 1.5;
+}
+
+.fit-check__result-label {
+  font-family: var(--display);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 0.5rem;
 }
 
 .fit-check .btn--solid:disabled {

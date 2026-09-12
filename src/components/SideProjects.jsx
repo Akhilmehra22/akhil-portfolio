@@ -1,35 +1,22 @@
 import Section from './Section.jsx'
-import RepoLink from './RepoLink.jsx'
-import { sideProjects } from '../data/projects.js'
+import ProjectCard from './ProjectCard.jsx'
+import { passionProjects } from '../data/projects.js'
 
 export default function SideProjects() {
+  if (passionProjects.length === 0) return null
+
   return (
     <Section
       id="side-projects"
-      label="Side Projects"
-      title="Products I have built and shipped"
-      lede="Separate from the analytics work above: things I built end to end because I wanted them to exist."
+      label="Passion Projects"
+      title="Things I built because I wanted them to exist"
+      lede="Separate from the analytics work above: full builds I put together with AI and agents to solve my own problems."
     >
-      <ul className="minilist">
-        {sideProjects.map((p) => (
-          <li className="minicard" key={p.title}>
-            <div className="minicard__main">
-              <h3 className="minicard__title">{p.title}</h3>
-              <p className="minicard__summary">{p.summary}</p>
-              <ul className="pills" aria-label="Tech used">
-                {p.tags.map((t, i) => (
-                  <li key={`${t}-${i}`} className="pill">
-                    {t}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="minicard__side">
-              <RepoLink url={p.repo} label="Repo" />
-            </div>
-          </li>
+      <div className="grid">
+        {passionProjects.map((p) => (
+          <ProjectCard project={p} key={p.slug} />
         ))}
-      </ul>
+      </div>
     </Section>
   )
 }

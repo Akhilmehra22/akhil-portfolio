@@ -1,16 +1,15 @@
 import { Link, useNavigate } from 'react-router-dom'
 
-// A few fixed bar heights so the decorative chart motif isn't literally
-// flat/identical on every card, without needing real chart data for it.
-const BAR_HEIGHTS = ['42%', '68%', '54%', '85%']
-
 // Brief on the card only — no real screenshot here. Full detail (findings,
 // all screenshots, README) lives on the /projects/:slug page. The whole
 // card is clickable, but the title and "View details" are real links too
-// (keyboard/no-JS reachable).
+// (keyboard/no-JS reachable). Each card's preview is a colored gradient
+// keyed to `accent`, with a project-specific `icon` — so cards read as
+// individual, not a wall of identical bar charts.
 export default function ProjectCard({ project }) {
   const navigate = useNavigate()
   const href = `/projects/${project.slug}`
+  const accent = project.accent || 'teal'
 
   return (
     <article
@@ -22,20 +21,16 @@ export default function ProjectCard({ project }) {
         if (e.key === 'Enter') navigate(href)
       }}
     >
-      <div className="card__preview">
+      <div className={`card__preview card__preview--${accent}`}>
         {project.category && (
           <span className="card__preview-label">{project.category}</span>
         )}
 
-        <div className="card__preview-art" aria-hidden="true">
-          {BAR_HEIGHTS.map((h, i) => (
-            <span
-              key={i}
-              className="card__preview-bar"
-              style={{ height: h }}
-            />
-          ))}
-        </div>
+        {project.icon && (
+          <span className="card__preview-icon" aria-hidden="true">
+            {project.icon}
+          </span>
+        )}
 
         {project.previewTags && (
           <div className="card__preview-tags">

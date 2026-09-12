@@ -53,10 +53,10 @@ export default function Hero() {
 
           <div className="hero__actions">
             <a className="btn btn--solid" href="#featured-projects">
-              View Featured Work
+              View My Work
             </a>
             <a className="btn" href="#all-projects">
-              All Projects
+              Passion Projects
             </a>
             <a className="btn" href={`mailto:${config.email}`}>
               Send Message

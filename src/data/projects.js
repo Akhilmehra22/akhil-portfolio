@@ -2,35 +2,33 @@
 //  PROJECT DATA  —  add a project by appending one object here.
 //  Nothing else in the codebase needs to change.
 //
-//  Shape:
+//  Two lists:
+//    projects       — professional analytics/data work.
+//                     `featured: true` also shows in "Featured Projects".
+//    passionProjects — things I built end to end with AI because I wanted
+//                      them to exist. Same card shape, shown under
+//                      "Passion Projects".
+//
+//  Both use the same card + detail-page system, so every entry needs:
 //    slug     string   URL segment for the detail page: /projects/{slug}
-//                      (lowercase, hyphenated, unique)
+//                      (lowercase, hyphenated, unique across BOTH lists)
 //    title    string   project name
-//    featured boolean  shows in the "Featured Projects" section. Every
-//                      project (featured or not) always shows in "All
-//                      Projects" too.
-//    category string   short label pill shown on the card's decorative
-//                      preview box (e.g. 'BI & Modeling')
-//    previewTags string[]  2-3 short domain keywords shown as small pills
-//                      inside the preview box — distinct from `tags` below
-//                      (those are tech stack; these are what-it's-about,
-//                      e.g. 'Late Delivery', 'Review Score')
-//    meta     string   small uppercase line in the card footer (e.g. 'Updated Aug 2026')
-//    summary  string   one line: what it is and why it exists — this is ALL
-//                      the card shows. Full detail lives in `findings`/
-//                      `outcome` below, which render only on the detail page.
+//    featured boolean  (projects list only) shows in "Featured Projects"
+//    category string   short label pill on the card's preview box
+//                      (e.g. 'BI & Modeling', 'Prompt Engineering')
+//    previewTags string[]  2-3 short domain keywords shown in the preview box
+//    meta     string   small uppercase footer line (e.g. 'Updated Aug 2026')
+//    summary  string   one line: what it is — this is ALL the card shows.
 //    tags     string[] tech tags shown as a row of chips
-//    findings { label, text }[]  key findings, each with a short label and
-//                      one sentence — rendered as a list on the detail page
+//    findings { label, text }[]  key findings, rendered on the detail page
 //                      (use this OR outcome, not both)
 //    outcome  string   single payoff line — simpler alternative to findings
 //    repo     string   GitHub URL  (set to '' to hide the link)
 //    readme   string   raw README URL (raw.githubusercontent.com/...) —
-//                      fetched and rendered on the detail page. Omit to
-//                      skip the README section.
-//    images   string[] optional screenshots in public/ (omit for no image;
-//                      more than one shows next/prev arrows on the card and
-//                      the detail page)
+//                      rendered on the detail page. Omit to skip it.
+//    images   string[] screenshots in public/ (omit for no image; the card
+//                      falls back to a decorative motif). More than one shows
+//                      next/prev arrows.
 // ============================================================
 
 export const projects = [
@@ -39,10 +37,14 @@ export const projects = [
     title: 'Delivery Performance & Review Impact Analysis',
     featured: true,
     category: 'BI & Modeling',
+    accent: 'teal',
+    icon: '📦',
     previewTags: ['Late Delivery', 'Review Score', 'Carrier Fault'],
     meta: 'Updated Aug 2026',
     summary:
       'A Kimball star schema and a three-page Power BI dashboard diagnosing where late delivery hurts customer satisfaction on a Brazilian e-commerce marketplace, and whose fault the lateness actually is.',
+    overview:
+      'An end-to-end build on the Olist Brazilian e-commerce dataset, from raw relational tables to a decision-ready dashboard. I modeled the data into a Kimball star schema in SQL Server: a fact table for orders with conformed dimensions for sellers, customers, products, geography and dates. On top of that I wrote the DAX measures and built a three-page Power BI report to answer one business question, where late delivery actually hurts customer satisfaction and whose fault the lateness is. The star schema is what makes the report fast to slice by seller, carrier, region and time without rewriting queries, and it is the same dimensional-modeling approach I use day to day in production.',
     tags: ['SQL Server', 'Power BI', 'DAX', 'Dimensional Modeling', 'Kimball'],
     findings: [
       {
@@ -68,31 +70,49 @@ export const projects = [
     ],
   },
 
+  {
+    slug: 'fifa-world-cup-performance-analysis',
+    title: 'FIFA 2022 World Cup Performance Analysis',
+    featured: true,
+    category: 'Python Analytics',
+    accent: 'coral',
+    icon: '⚽',
+    previewTags: ['Expected Goals', 'Finishing', 'Event Data'],
+    meta: 'Updated Jul 2026',
+    summary:
+      'A Python analysis of StatsBomb event data across all 64 matches of the 2022 World Cup, measuring finishing quality with expected goals (xG) and shipping the result as an interactive Tableau dashboard.',
+    overview:
+      'A hands-on Python project to sharpen my pandas and analysis skills on a dataset I actually care about. I pulled StatsBomb event data for all 64 matches of the 2022 World Cup, which records every pass, shot and touch, and used pandas to reshape hundreds of thousands of event rows into player- and team-level shooting profiles. The core idea is expected goals (xG), a model of how likely each shot was to score, which lets you separate genuinely good finishing from luck and shot volume. I visualised the findings with matplotlib and published an interactive Tableau dashboard so anyone can explore the players themselves.',
+    tags: ['Python', 'pandas', 'matplotlib', 'statsbombpy', 'Tableau'],
+    findings: [
+      {
+        label: 'Messi vs Mbappé',
+        text: 'Both scored 9 goals but through different profiles: Messi generated 7.6 xG on 34 shots (high volume, high quality), while Mbappé generated only 5.0 xG on 32 shots yet outscored his model by 4, making him the tournament’s most clinical finisher.',
+      },
+      {
+        label: 'Best shot quality',
+        text: 'Argentina generated the highest xG per shot at 0.19, so their average attempt had a 19% chance of scoring. Their attack was high quality, not just high volume.',
+      },
+      {
+        label: 'Scoring first matters',
+        text: 'Teams that scored first won 76% of group-stage matches and 73% of knockout matches, quantifying just how decisive the opening goal was.',
+      },
+    ],
+    repo: 'https://github.com/Akhilmehra22/analytics-portfolio/tree/main/fifa',
+    readme:
+      'https://raw.githubusercontent.com/Akhilmehra22/analytics-portfolio/main/fifa/README.md',
+    images: ['/fifa-scoring-first.png'],
+  },
+
   // ================================================================
-  //  SLOT 2 — uncomment the block below and fill it in when ready.
+  //  NEXT FEATURED BUILD (supply-chain warehouse / dbt ELT).
   //  Left commented on purpose: a half-written card on a live site
-  //  looks worse than no card at all.
+  //  looks worse than no card at all. Uncomment and fill when ready.
   // ================================================================
   // {
   //   slug: '',
   //   title: '',
-  //   featured: false,
-  //   category: '',
-  //   meta: '',
-  //   summary: '',
-  //   tags: ['', '', ''],
-  //   outcome: '',
-  //   repo: '',
-  //   readme: '',
-  // },
-
-  // ================================================================
-  //  SLOT 3 — same deal.
-  // ================================================================
-  // {
-  //   slug: '',
-  //   title: '',
-  //   featured: false,
+  //   featured: true,
   //   category: '',
   //   meta: '',
   //   summary: '',
@@ -103,23 +123,135 @@ export const projects = [
   // },
 ]
 
-// Products, not analyses. Kept deliberately separate from the work above.
-export const sideProjects = [
+// Passion projects — same card shape as above, shown in their own section.
+// Things I build with AI/agents to solve my own problems. Drop a screenshot
+// into public/ and reference it in `images` to fill the card.
+export const passionProjects = [
   {
+    slug: 'lodestar-job-search-agent',
+    title: 'Lodestar — Job Search Agent',
+    category: 'Prompt Engineering',
+    accent: 'indigo',
+    icon: '🧭',
+    previewTags: ['Scanners', 'Fit Scoring', 'Pipeline'],
+    meta: 'Runs daily',
+    summary:
+      'A local job-search engine I built on the open-source career-ops framework. It scans postings, scores each against my target profile, and tracks the pipeline on a dashboard.',
+    overview:
+      'My own job search, turned into a system instead of a hundred browser tabs. Lodestar runs on my machine and scans LinkedIn, Indeed and Adzuna on a schedule, pulls the postings, dedupes them against everything I have already seen, and scores each opening on title, pay, location, stack and freshness so the strongest roles float to the top. A dashboard shows the ranked pipeline, the full breakdown for any role, and where each application stands. It has surfaced 255 tracked roles and counting, and it is honestly why my search stays organised. career-ops is an open-source framework I forked for the plumbing; the scanning, ranking and dashboard layer is what I built on top.',
+    tags: ['Node.js', 'Agents', 'Job Scanners', 'Ranking'],
+    findings: [
+      {
+        label: 'What it does',
+        text: 'Scanners pull postings from LinkedIn, Indeed and Adzuna, dedupe them against what I’ve already seen, score each one for fit, and write the result to a pipeline the dashboard reads.',
+      },
+      {
+        label: 'Always on',
+        text: 'A scheduled task keeps the local server running in the background and restarts it if it ever dies, so the dashboard is live whenever I open it.',
+      },
+      {
+        label: 'What I built vs. forked',
+        text: 'career-ops is an open-source base I forked; Lodestar is the scanning, ranking and dashboard layer I built on top of it.',
+      },
+    ],
+    repo: 'https://github.com/Akhilmehra22/career-ops',
+    images: ['/lodestar.png'],
+  },
+  {
+    slug: 'quickapply-cv-cover-letter',
+    title: 'QuickApply — CV & Cover Letter Generator',
+    category: 'Prompt Engineering',
+    accent: 'gold',
+    icon: '📝',
+    previewTags: ['Tailoring', 'Fact-Check', 'PDF'],
+    meta: 'Python + OpenAI',
+    summary:
+      'A tool that tailors my CV and writes a cover letter for a specific job in one command, with a fact-check gate that refuses to invent anything.',
+    overview:
+      'The companion to Lodestar, for a job I found outside the scan queue: a link a friend sent, something on a company careers page. I give it the posting URL or paste the job description, plus the company and role, and it tailors my CV and drafts a cover letter in one command. It rewrites the summary, reorders and reformulates bullets, and picks the most relevant competencies and projects, then renders clean PDFs with headless Chromium. The part I am most proud of is the fact-check gate: before it renders, every metric or claim in the output is checked against my real CV, and anything that cannot be traced back aborts generation and prints the offending line. It reformulates, it never fabricates, which matters when the document is going to a real employer.',
+    tags: ['Python', 'OpenAI API', 'Playwright', 'Fact-Check Gate'],
+    findings: [
+      {
+        label: 'Reformulate, never fabricate',
+        text: 'Every generated metric or claim is scanned and must trace back to my real CV. Anything that doesn’t aborts generation and prints the offending claim, so the output stays honest.',
+      },
+      {
+        label: 'Clean PDFs',
+        text: 'It renders the tailored CV and cover letter to PDF with headless Chromium, the same technique the main project uses.',
+      },
+      {
+        label: 'Fits the pipeline',
+        text: 'For a job found outside the scan queue it can push the tailored documents straight onto the Lodestar dashboard as a tracked application.',
+      },
+    ],
+    repo: 'https://github.com/Akhilmehra22/career-ops',
+    images: ['/quickapply.png'],
+  },
+  {
+    slug: 'vedic-astrology-web-app',
     title: 'Vedic Astrology Web App',
+    category: 'Prompt Engineering',
+    accent: 'purple',
+    icon: '🔯',
+    previewTags: ['RAG', 'Birth Chart', 'pgvector'],
+    meta: 'Full-stack',
     summary:
-      'A web app that computes Vedic charts and answers questions about them over a retrieval layer of classical texts.',
-    tags: ['FastAPI', 'RAG', 'React'],
-    repo: 'TODO_SIDE_PROJECT_1_REPO_URL', // TODO or '' to hide
+      'A full-stack app that computes a complete sidereal birth chart, then answers questions about it using Retrieval-Augmented Generation over classical texts.',
+    overview:
+      'A full-stack app I built to learn Retrieval-Augmented Generation properly, on a subject I find genuinely interesting. You enter your birth details and a Python engine computes a complete sidereal (Lahiri) chart: the ascendant, planetary placements, divisional charts, yogas and the full daśā timeline, with no external data files. The interesting part is the answers. I embedded a corpus of classical Sanskrit-translation texts with OpenAI embeddings into a Supabase pgvector store, so when you ask a question it retrieves the most relevant passages and feeds them, together with your actual chart, to the model. Every answer is grounded in both, and a FastAPI backend streams it back token by token. It taught me embeddings, vector search and grounding, which is the same architecture behind serious enterprise RAG.',
+    tags: ['FastAPI', 'React', 'RAG', 'Supabase pgvector', 'OpenAI Embeddings'],
+    findings: [
+      {
+        label: 'The chart engine',
+        text: 'A Python engine computes the ascendant, planetary placements, divisional charts, yogas and the full daśā timeline from birth details, with no external data files.',
+      },
+      {
+        label: 'Grounded answers',
+        text: 'The classical corpus is embedded with OpenAI embeddings into a Supabase pgvector store; each answer retrieves the most relevant passages and is grounded in both the chart and those passages.',
+      },
+      {
+        label: 'Streaming chat',
+        text: 'A FastAPI backend streams answers token by token over SSE, always with the full chart in context.',
+      },
+    ],
+    repo: 'https://github.com/Akhilmehra22/vedic-astrology',
+    images: ['/vedic.png', '/vedic-chat.png'],
   },
   {
-    title: 'AI Job-Search Agent',
+    slug: 'analyst-arena-sql-practice',
+    title: 'Analyst Arena — SQL Practice Engine',
+    category: 'Prompt Engineering',
+    accent: 'crimson',
+    icon: '🎮',
+    previewTags: ['Real Execution', 'T-SQL', 'DAX'],
+    meta: 'Interview prep',
     summary:
-      'An agent that finds job postings, scores how well each one fits, and tracks the application pipeline end to end.',
-    tags: ['Python', 'LLM Agents', 'Automation'],
-    repo: 'TODO_SIDE_PROJECT_2_REPO_URL', // TODO or '' to hide
+      'An interview-prep app for data analysts where every answer actually executes: real SQLite, real Python + pandas, and a DAX engine that evaluates your measure across filter contexts.',
+    overview:
+      'An interview-prep app I built for myself while preparing for senior data analyst rounds, shaped like a game so the practice actually sticks. Every answer you write really runs: your SQL executes against a real SQLite database, your pandas runs in real CPython, and your DAX measure is evaluated across several filter contexts, then compared to the reference solution cell by cell. Nothing is string-matched, so it catches the same mistakes an interviewer would. It also has a T-SQL layer that translates SSMS-style syntax to SQLite and shows you the translated query, so I can practise the way I write at work. Building the execution engine and the T-SQL translation taught me more about how SQL dialects and DAX evaluation actually work than any course did.',
+    tags: ['TypeScript', 'React', 'SQLite', 'pandas', 'DAX'],
+    findings: [
+      {
+        label: 'Nothing is string-matched',
+        text: 'Your query runs against a real database, your pandas runs in real CPython, and your DAX measure is evaluated in several filter contexts, then compared to the reference answer cell by cell.',
+      },
+      {
+        label: 'A T-SQL layer',
+        text: 'You can write SSMS-style T-SQL and it’s translated to SQLite before running, with the translated query shown so you always see what actually executed.',
+      },
+      {
+        label: 'Shaped like a campaign',
+        text: 'Tasks carry hints and a note on what an interviewer is really probing for, with XP, ranks and saved progress to keep the practice going.',
+      },
+    ],
+    repo: '',
+    images: ['/analyst-arena.png'],
   },
 ]
+
+// Combined list for the detail-page lookup, so /projects/:slug resolves an
+// entry from either list.
+export const allProjects = [...projects, ...passionProjects]
 
 export const skills = [
   {

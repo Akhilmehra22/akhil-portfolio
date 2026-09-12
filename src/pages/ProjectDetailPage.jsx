@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { marked } from 'marked'
 import Carousel from '../components/Carousel.jsx'
-import { projects } from '../data/projects.js'
+import { allProjects } from '../data/projects.js'
 
 function useReadme(url) {
   const [state, setState] = useState({ status: 'idle', html: '' })
@@ -40,7 +40,7 @@ function useReadme(url) {
 
 export default function ProjectDetailPage() {
   const { slug } = useParams()
-  const project = projects.find((p) => p.slug === slug)
+  const project = allProjects.find((p) => p.slug === slug)
   const readme = useReadme(project?.readme)
 
   if (!project) {
@@ -59,13 +59,16 @@ export default function ProjectDetailPage() {
   return (
     <main className="shell">
       <section className="panel reveal is-visible project-detail">
-        <Link className="card__link" to="/#all-projects">
-          &larr; Back to projects
+        <Link className="btn back-btn" to="/#featured-projects">
+          <span aria-hidden="true">&#10094;</span> Back to projects
         </Link>
 
         {project.category && <p className="eyebrow">{project.category}</p>}
         <h1 className="panel__title">{project.title}</h1>
         <p className="hero__intro">{project.summary}</p>
+        {project.overview && (
+          <p className="project-detail__overview">{project.overview}</p>
+        )}
 
         <ul className="pills" aria-label="Tech used">
           {project.tags.map((t, i) => (
@@ -77,7 +80,7 @@ export default function ProjectDetailPage() {
 
         {project.images && (
           <div className="project-detail__gallery">
-            <Carousel images={project.images} alt={project.title} />
+            <Carousel images={project.images} alt={project.title} expandable />
           </div>
         )}
 
