@@ -1,17 +1,36 @@
-import { useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import { credentials } from '../data/config.js'
 
-// A credential card that flips on click to reveal its history. The whole card
-// is a button so it is keyboard reachable; clicking the link on the back does
-// not trigger a flip.
-function CredCard({ eyebrow, primary, secondary, url, linkLabel, logo, history, wide }) {
+// A credential card that flips on click to reveal its history. Hover only gives
+// a small lift (handled in CSS); a click flips it and the card grows to fit the
+// history so nothing scrolls. The back height is measured from the real content
+// so every card grows exactly as much as it needs.
+function CredCard({ eyebrow, primary, secondary, logo, history, wide }) {
   const [flipped, setFlipped] = useState(false)
+  const [backH, setBackH] = useState(null)
+  const backRef = useRef(null)
   const hasHistory = Array.isArray(history) && history.length > 0
+
+  // measure the back face once it is laid out, and on resize
+  useLayoutEffect(() => {
+    if (!hasHistory) return
+    const measure = () => {
+      if (backRef.current) setBackH(backRef.current.scrollHeight)
+    }
+    measure()
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
+  }, [hasHistory])
 
   const toggle = () => hasHistory && setFlipped((f) => !f)
 
+  const style = backH ? { '--back-h': `${backH}px` } : undefined
+
   return (
-    <div className={`cred-flip ${wide ? 'cred--wide' : ''} ${flipped ? 'is-flipped' : ''}`}>
+    <div
+      className={`cred-flip ${wide ? 'cred--wide' : ''} ${flipped ? 'is-flipped' : ''}`}
+      style={style}
+    >
       <div
         className="cred-flip__inner"
         role={hasHistory ? 'button' : undefined}
@@ -36,12 +55,12 @@ function CredCard({ eyebrow, primary, secondary, url, linkLabel, logo, history, 
           </div>
           {secondary && <p className="cred__secondary">{secondary}</p>}
           {hasHistory && (
-            <span className="cred__more">Tap to see the story &rarr;</span>
+            <span className="cred__more">Click to see the story &rarr;</span>
           )}
         </div>
 
         {/* back */}
-        <div className="cred cred-flip__face cred-flip__back">
+        <div className="cred cred-flip__face cred-flip__back" ref={backRef}>
           <p className="cred__eyebrow">{eyebrow}</p>
           <ul className="cred__history">
             {(history || []).map((line, i) => (
