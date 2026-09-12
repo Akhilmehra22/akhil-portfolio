@@ -33,6 +33,38 @@
 
 export const projects = [
   {
+    slug: 'freight-delivery-warehouse',
+    title: 'Freight Delivery Performance Warehouse',
+    featured: true,
+    category: 'Data Warehousing',
+    accent: 'indigo',
+    icon: '🚚',
+    previewTags: ['Star Schema', 'SCD Type 2', 'On-Time %'],
+    meta: 'Updated Sep 2026',
+    summary:
+      'A SQL Server data warehouse for a trucking operation: a Kimball star schema with a Type 2 driver dimension, and a dashboard diagnosing where late deliveries come from.',
+    overview:
+      'A dimensional warehouse built the way I build them at work, on a year of realistic freight data (18,000 shipments). Raw shipments land in a staging layer, then load into a Kimball star schema in SQL Server: a fct_shipments fact at one-shipment grain, with conformed dimensions for driver, truck, customer, lane and date. The driver dimension is a Type 2 slowly changing dimension, so a shipment always reports against who the driver was on the ship date, not who they are now. On top of that sits a dashboard that answers the operational question, where do late deliveries actually come from. I validated the whole pipeline end to end (no rows lost from staging to fact) and every number on the dashboard comes from the queries, not a mockup.',
+    tags: ['SQL Server', 'T-SQL', 'Dimensional Modeling', 'Kimball', 'SCD Type 2'],
+    findings: [
+      {
+        label: 'Long hauls run late',
+        text: 'The network runs 81.4% on time overall, but long hauls out of Toronto lag badly: Toronto to Vancouver at 74% and Toronto to Calgary at 77%, against 84%+ on short regional runs.',
+      },
+      {
+        label: 'Most delays are not the carrier',
+        text: 'When a load is late, only 41% is carrier-controllable. The other 59% is weather, customer readiness or mechanical, which changes what you actually do about it.',
+      },
+      {
+        label: 'Winter is the whole story',
+        text: 'On-time performance holds near 84% from spring through fall, then drops to 75% in December and 72% in January. The year looks flat until you split it by season.',
+      },
+    ],
+    repo: '',
+    images: ['/freight-warehouse.png'],
+  },
+
+  {
     slug: 'delivery-performance-review-impact',
     title: 'Delivery Performance & Review Impact Analysis',
     featured: true,
