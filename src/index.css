@@ -534,6 +534,8 @@ ul {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   overflow: hidden;
+  /* the lift/shadow live on the faces, so they never disturb the 3D flip */
+  transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
 }
 .cred-flip__front {
   transform: rotateY(0deg);
@@ -546,17 +548,18 @@ ul {
   min-height: 100%;
 }
 
-/* Hover lift lives on a wrapper transform that does NOT interact with the 3D
-   flip: it is on the outer .cred-flip and only while the card is on its front.
-   Once flipped, hover is fully disabled, so there is nothing to fluctuate. */
-.cred-flip:not(.is-flipped) {
-  transition: transform 160ms ease, min-height 460ms ease;
+/* Hover bounce, same feel as the project cards, applied to whichever face is
+   showing by lifting that face (combined with its own rotation). The container
+   is never transformed, so the flip can never flicker. Once flipped, only a
+   click flips it back; hovering just bounces the back face. */
+.cred-flip:not(.is-flipped) .cred-flip__inner:hover .cred-flip__front {
+  transform: rotateY(0deg) translateY(-4px);
+  border-color: var(--line-strong);
+  box-shadow: 0 20px 34px rgba(55, 43, 21, 0.12);
 }
-.cred-flip:not(.is-flipped):hover {
-  transform: translateY(-3px);
-}
-.cred-flip.is-flipped:hover {
-  transform: none;
+.cred-flip.is-flipped .cred-flip__inner:hover .cred-flip__back {
+  transform: rotateY(180deg) translateY(4px);
+  box-shadow: 0 20px 34px rgba(26, 122, 117, 0.16);
 }
 .cred-flip .cred:hover {
   transform: none;
