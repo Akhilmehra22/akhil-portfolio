@@ -493,8 +493,8 @@ ul {
    ============================================================ */
 .cred-flip {
   perspective: 1400px;
-  min-height: 118px;
-  --back-h: 118px;
+  min-height: 158px;
+  --back-h: 158px;
   transition: min-height 460ms ease;
 }
 .cred-flip.cred--wide {
@@ -543,11 +543,15 @@ ul {
 }
 .cred-flip__front {
   transform: rotateY(0deg);
+  /* teal accent strip down the left edge, so the cards read as one branded,
+     clickable set */
+  border-left: 3px solid var(--teal);
 }
 .cred-flip__back {
   transform: rotateY(180deg);
   background: rgba(26, 122, 117, 0.06);
   border-color: rgba(26, 122, 117, 0.22);
+  border-left: 3px solid var(--teal);
   height: auto;
   min-height: 100%;
 }
@@ -570,15 +574,26 @@ ul {
   box-shadow: none;
 }
 
+/* the clickable hint: a divider then a teal row that reads as a button, always
+   pinned to the bottom of the card with consistent spacing */
 .cred__more {
   margin-top: auto;
-  padding-top: 0.5rem;
+  padding-top: 0.65rem;
+  margin-top: 0.7rem;
+  border-top: 1px solid rgba(26, 122, 117, 0.18);
   font-family: var(--display);
   font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-weight: 800;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--teal);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+/* margin-top:auto pushes it down; the border needs the padding above it */
+.cred-flip__front .cred__more {
+  margin-top: auto;
 }
 
 /* history as short story paragraphs, laid out in wide columns when there is

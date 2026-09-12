@@ -126,7 +126,6 @@ export default function Credentials() {
         primary={experience.stat}
         secondary={experience.note}
         history={experience.history}
-        wide
       />
       {personality && (
         <CredCard
@@ -134,7 +133,6 @@ export default function Credentials() {
           primary={personality.stat}
           secondary={personality.note}
           history={personality.history}
-          wide
         />
       )}
     </div>
