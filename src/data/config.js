@@ -39,8 +39,8 @@ export const highlights = [
 // cv.md — these are the same facts, just surfaced at a glance. Leave any
 // `url` empty to hide that card's link.
 // Each card can carry a `history` array. When the card is clicked it flips to
-// reveal these lines, so the front stays a clean summary and the story lives on
-// the back. Keep the lines short; they render as a bulleted list.
+// reveal the story on the back. Each array item is one short paragraph, so keep
+// them to two or three per card.
 export const credentials = {
   currentRole: {
     title: 'Analytics Engineer',
@@ -48,12 +48,9 @@ export const credentials = {
     url: '', // TODO: company site, optional
     logo: '/logos/titanium.png',
     history: [
-      'Started as the SQL specialist for the team: built SSRS reports and DAWG reports the business ran on every day.',
-      'Wrote stored procedures to feed the tables and dashboards, and data-quality alerts that flagged wrong or missing information before anyone acted on it.',
-      'Set up sync-check jobs so tables across systems stayed reconciled.',
-      'As the reporting surface grew, I took on the modeling behind it and moved into analytics engineering.',
-      'Led a 0-to-1 data warehouse build: a Kimball star schema with SCD Types 1 and 2 across seven source systems.',
-      'Built certified Power BI semantic models with row-level security for self-serve reporting across finance, ops, sales and leadership, all under Git version control.',
+      'I came in as the SQL specialist for the team. I built the SSRS and DAWG reports the business ran on every day, wrote the stored procedures that fed the tables and dashboards, and set up data-quality alerts that caught wrong or missing information before anyone acted on it, along with sync-check jobs that kept tables reconciled across systems.',
+      'As the reporting surface grew, I took on the modeling behind it and grew into analytics engineering. I led a 0-to-1 data warehouse build, a Kimball star schema with SCD Types 1 and 2 across seven source systems, and turned a pile of spreadsheets into something the business could trust.',
+      'Today I own the Power BI workspaces under Git version control and the certified semantic models, with row-level security, that power self-serve reporting across finance, ops, sales and leadership.',
     ],
   },
   previousRole: {
@@ -65,9 +62,8 @@ export const credentials = {
     url: '', // TODO: company site, optional
     logo: '/logos/telus.png',
     history: [
-      'Built subscriber lifecycle dashboards for a telecom client.',
-      'Ran cohort retention analysis and marketing attribution modeling.',
-      'Turned messy source data into clean, reportable models for stakeholders.',
+      'I worked as a data consultant for a telecom client, building the subscriber lifecycle dashboards their teams used to track the customer base.',
+      'A lot of the work was turning messy source data into clean, reportable models, then running cohort retention analysis and marketing attribution on top of it to answer where customers were coming from and why they left.',
     ],
   },
   earlierRole: {
@@ -76,9 +72,8 @@ export const credentials = {
     url: '', // TODO: company site, optional
     logo: '/logos/pokerbaazi.png',
     history: [
-      'Player segmentation with RFM and K-Means for an online gaming company.',
-      'Funnel analytics, A/B testing, and LTV / churn modeling.',
-      'Executive dashboards in Tableau and Looker.',
+      'This was where I cut my teeth as an analyst, working on the player base for an online gaming company.',
+      'I ran player segmentation with RFM and K-Means, built out funnel analytics and A/B tests, modeled lifetime value and churn, and shipped the executive dashboards in Tableau and Looker that leadership watched.',
     ],
   },
   education: {
@@ -87,18 +82,16 @@ export const credentials = {
     url: '', // TODO: program page, optional
     logo: '/logos/stlawrence.png',
     history: [
-      'Post-graduate program in Business Analytics, Ontario.',
-      'Foundation in statistics, data modeling, and BI tooling.',
-      'The bridge from analyst work into analytics engineering.',
+      'I did a post-graduate program in Business Analytics in Ontario, which gave me the grounding in statistics, data modeling and BI tooling.',
+      'It was the bridge that took me from analyst work into the modeling and engineering side of data.',
     ],
   },
   experience: {
     stat: '5+ years',
     note: 'Across transportation, telecom, and gaming',
     history: [
-      'Transportation and logistics: analytics engineering and data warehousing.',
-      'Telecom: subscriber and retention analytics.',
-      'Online gaming: player and funnel analytics.',
+      'Five years across three very different industries, which is where a lot of my range comes from.',
+      'Transportation and logistics gave me the analytics engineering and data warehousing depth, telecom taught me subscriber and retention analytics, and online gaming was where I learned player and funnel analytics under real volume.',
     ],
   },
 }
