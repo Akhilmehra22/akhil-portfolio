@@ -47,7 +47,7 @@ export default function FitCheck() {
       id="fit-check"
       label="Ask About Akhil"
       title="Are We a Fit?"
-      lede="Describe your project, your team, or the kind of person you're looking for. Then choose how you'd like to size Akhil up: as the professional who does the work, or as the teammate who does it alongside you."
+      lede="Describe your project, your team, or the kind of person you're looking for. Then choose how you'd like to size Akhil up: as the professional who does the work, or as the person you'd actually work with day to day."
     >
       <form className="fit-check" onSubmit={(e) => e.preventDefault()}>
         <textarea
@@ -80,15 +80,15 @@ export default function FitCheck() {
           >
             {loading && activeMode === 'collaborator'
               ? 'Assessing…'
-              : 'Assess the Collaborator'}
+              : 'Assess the Personality'}
           </button>
         </div>
 
         <p className="fit-check__disclaimer">
-          The professional view weighs skills and experience; the collaborator
-          view weighs how Akhil works with a team, takes ownership, and learns.
-          Prompts are processed by OpenAI. Please don’t share sensitive company
-          data or personal information.
+          The professional view weighs skills and experience; the personality
+          view weighs how Akhil works, takes ownership, and learns. Prompts are
+          processed by OpenAI. Please don’t share sensitive company data or
+          personal information.
         </p>
 
         {result && (
@@ -99,7 +99,7 @@ export default function FitCheck() {
             {status === 'done' && activeMode && (
               <p className="fit-check__result-label">
                 {activeMode === 'collaborator'
-                  ? 'As a collaborator'
+                  ? 'As a person'
                   : 'As a professional'}
               </p>
             )}
