@@ -492,16 +492,19 @@ ul {
    Flip cards: front summary flips to reveal the story
    ============================================================ */
 .cred-flip {
-  perspective: 1200px;
+  perspective: 1400px;
   min-height: 118px;
   --back-h: 118px;
-  transition: min-height 520ms cubic-bezier(0.4, 0.15, 0.2, 1);
-}
-.cred-flip.is-flipped {
-  min-height: var(--back-h);
+  transition: min-height 460ms ease;
 }
 .cred-flip.cred--wide {
   grid-column: 1 / -1;
+}
+/* when flipped, the card breaks out to the full row width so the story reads
+   as wide paragraphs, not a tall skinny column, and grows to fit them */
+.cred-flip.is-flipped {
+  grid-column: 1 / -1;
+  min-height: var(--back-h);
 }
 
 .cred-flip__inner {
@@ -513,8 +516,7 @@ ul {
   cursor: pointer;
   outline: none;
 }
-/* only a click (the is-flipped class) turns the card; hover never sets a
-   transform on the inner, so the flip can never flicker against a hover */
+/* only a click (the is-flipped class) ever turns the card */
 .cred-flip.is-flipped .cred-flip__inner {
   transform: rotateY(180deg);
 }
@@ -535,13 +537,6 @@ ul {
 }
 .cred-flip__front {
   transform: rotateY(0deg);
-  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
-}
-/* subtle lift on the front face only, and only while not flipped */
-.cred-flip:not(.is-flipped) .cred-flip__inner:hover .cred-flip__front {
-  transform: rotateY(0deg) translateY(-3px);
-  border-color: var(--line-strong);
-  box-shadow: 0 14px 24px rgba(55, 43, 21, 0.08);
 }
 .cred-flip__back {
   transform: rotateY(180deg);
@@ -549,6 +544,19 @@ ul {
   border-color: rgba(26, 122, 117, 0.22);
   height: auto;
   min-height: 100%;
+}
+
+/* Hover lift lives on a wrapper transform that does NOT interact with the 3D
+   flip: it is on the outer .cred-flip and only while the card is on its front.
+   Once flipped, hover is fully disabled, so there is nothing to fluctuate. */
+.cred-flip:not(.is-flipped) {
+  transition: transform 160ms ease, min-height 460ms ease;
+}
+.cred-flip:not(.is-flipped):hover {
+  transform: translateY(-3px);
+}
+.cred-flip.is-flipped:hover {
+  transform: none;
 }
 .cred-flip .cred:hover {
   transform: none;
@@ -566,19 +574,25 @@ ul {
   color: var(--teal);
 }
 
-/* history as short story paragraphs */
+/* history as short story paragraphs, laid out in wide columns when there is
+   room so the flipped card reads horizontally rather than as a tall column */
 .cred__history {
-  margin: 0.5rem 0 0;
+  margin: 0.6rem 0 0;
   padding: 0;
-  display: grid;
-  gap: 0.6rem;
   list-style: none;
+  columns: 2;
+  column-gap: 1.6rem;
 }
 .cred__history li {
   font-family: var(--serif);
-  font-size: 0.86rem;
-  line-height: 1.5;
+  font-size: 0.9rem;
+  line-height: 1.55;
   color: #172028;
+  margin-bottom: 0.7rem;
+  break-inside: avoid;
+}
+@media (max-width: 620px) {
+  .cred__history { columns: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {

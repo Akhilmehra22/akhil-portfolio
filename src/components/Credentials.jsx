@@ -11,16 +11,23 @@ function CredCard({ eyebrow, primary, secondary, logo, history, wide }) {
   const backRef = useRef(null)
   const hasHistory = Array.isArray(history) && history.length > 0
 
-  // measure the back face once it is laid out, and on resize
+  // Measure the back face so the card grows to exactly fit the story. The back
+  // reflows into two columns once the card is flipped (it goes full width), so
+  // we re-measure whenever the flipped state or the window size changes, and
+  // once more after the width transition settles.
   useLayoutEffect(() => {
     if (!hasHistory) return
     const measure = () => {
       if (backRef.current) setBackH(backRef.current.scrollHeight)
     }
     measure()
+    const t = setTimeout(measure, 260) // after the full-width transition
     window.addEventListener('resize', measure)
-    return () => window.removeEventListener('resize', measure)
-  }, [hasHistory])
+    return () => {
+      clearTimeout(t)
+      window.removeEventListener('resize', measure)
+    }
+  }, [hasHistory, flipped])
 
   const toggle = () => hasHistory && setFlipped((f) => !f)
 
