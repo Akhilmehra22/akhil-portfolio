@@ -82,8 +82,14 @@ function CredCard({ eyebrow, primary, secondary, logo, history, wide }) {
 }
 
 export default function Credentials() {
-  const { currentRole, previousRole, earlierRole, education, experience } =
-    credentials
+  const {
+    currentRole,
+    previousRole,
+    earlierRole,
+    education,
+    experience,
+    personality,
+  } = credentials
 
   return (
     <div className="creds">
@@ -122,6 +128,15 @@ export default function Credentials() {
         history={experience.history}
         wide
       />
+      {personality && (
+        <CredCard
+          eyebrow="Personality"
+          primary={personality.stat}
+          secondary={personality.note}
+          history={personality.history}
+          wide
+        />
+      )}
     </div>
   )
 }

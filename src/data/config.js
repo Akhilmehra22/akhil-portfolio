@@ -94,6 +94,15 @@ export const credentials = {
       'Transportation and logistics gave me the analytics engineering and data warehousing depth, telecom taught me subscriber and retention analytics, and online gaming was where I learned player and funnel analytics under real volume.',
     ],
   },
+  personality: {
+    stat: 'How I work',
+    note: 'The person behind the resume',
+    history: [
+      'I am a builder and a self-starter. When I hit a problem I would rather build my way out of it than wait to be told what to do, and most of what I know I have learned by shipping something real. The side projects on this site, an agent that runs my job search, a SQL practice engine, a full-stack RAG app, were all things I decided should exist and then built.',
+      'That also means I pick up new tools fast. I taught myself embeddings, vector search and agent building on my own, and I am always closing the next gap.',
+      'Day to day I am calm and methodical. I validate before I move on, I bring solutions rather than just problems, and I make small, targeted changes instead of sweeping rewrites. I also translate the technical work for the business, so ops, finance and leadership actually use what I build.',
+    ],
+  },
 }
 
 export const about = [

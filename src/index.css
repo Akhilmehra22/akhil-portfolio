@@ -534,6 +534,10 @@ ul {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   overflow: hidden;
+  /* flex column so the "Click to see the story" hint always sits at the bottom
+     of the front, on every card */
+  display: flex;
+  flex-direction: column;
   /* the lift/shadow live on the faces, so they never disturb the 3D flip */
   transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
 }
