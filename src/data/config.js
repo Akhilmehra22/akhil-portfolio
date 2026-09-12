@@ -38,12 +38,23 @@ export const highlights = [
 // The credentials grid shown beside the hero photo. Keep this in sync with
 // cv.md — these are the same facts, just surfaced at a glance. Leave any
 // `url` empty to hide that card's link.
+// Each card can carry a `history` array. When the card is clicked it flips to
+// reveal these lines, so the front stays a clean summary and the story lives on
+// the back. Keep the lines short; they render as a bulleted list.
 export const credentials = {
   currentRole: {
     title: 'Analytics Engineer',
     org: 'Titanium Transportation Group',
     url: '', // TODO: company site, optional
     logo: '/logos/titanium.png',
+    history: [
+      'Started as the SQL specialist for the team: built SSRS reports and DAWG reports the business ran on every day.',
+      'Wrote stored procedures to feed the tables and dashboards, and data-quality alerts that flagged wrong or missing information before anyone acted on it.',
+      'Set up sync-check jobs so tables across systems stayed reconciled.',
+      'As the reporting surface grew, I took on the modeling behind it and moved into analytics engineering.',
+      'Led a 0-to-1 data warehouse build: a Kimball star schema with SCD Types 1 and 2 across seven source systems.',
+      'Built certified Power BI semantic models with row-level security for self-serve reporting across finance, ops, sales and leadership, all under Git version control.',
+    ],
   },
   previousRole: {
     title: 'Data Consultant',
@@ -53,22 +64,42 @@ export const credentials = {
     org: 'QNE Software (Client: Telus International)',
     url: '', // TODO: company site, optional
     logo: '/logos/telus.png',
+    history: [
+      'Built subscriber lifecycle dashboards for a telecom client.',
+      'Ran cohort retention analysis and marketing attribution modeling.',
+      'Turned messy source data into clean, reportable models for stakeholders.',
+    ],
   },
   earlierRole: {
     title: 'Data Analyst',
     org: 'PokerBaazi (Baazi Games)',
     url: '', // TODO: company site, optional
     logo: '/logos/pokerbaazi.png',
+    history: [
+      'Player segmentation with RFM and K-Means for an online gaming company.',
+      'Funnel analytics, A/B testing, and LTV / churn modeling.',
+      'Executive dashboards in Tableau and Looker.',
+    ],
   },
   education: {
     program: 'Business Analytics',
     school: 'St. Lawrence College',
     url: '', // TODO: program page, optional
     logo: '/logos/stlawrence.png',
+    history: [
+      'Post-graduate program in Business Analytics, Ontario.',
+      'Foundation in statistics, data modeling, and BI tooling.',
+      'The bridge from analyst work into analytics engineering.',
+    ],
   },
   experience: {
     stat: '5+ years',
     note: 'Across transportation, telecom, and gaming',
+    history: [
+      'Transportation and logistics: analytics engineering and data warehousing.',
+      'Telecom: subscriber and retention analytics.',
+      'Online gaming: player and funnel analytics.',
+    ],
   },
 }
 

@@ -488,6 +488,107 @@ ul {
   grid-column: 1 / -1;
 }
 
+/* ============================================================
+   Flip cards: front summary flips to reveal the history
+   ============================================================ */
+.cred-flip {
+  perspective: 1200px;
+  min-height: 118px;
+}
+.cred-flip.cred--wide {
+  grid-column: 1 / -1;
+}
+
+.cred-flip__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  transform-style: preserve-3d;
+  transition: transform 520ms cubic-bezier(0.4, 0.15, 0.2, 1);
+  cursor: pointer;
+  outline: none;
+}
+.cred-flip.is-flipped .cred-flip__inner {
+  transform: rotateY(180deg);
+}
+.cred-flip__inner:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 4px;
+  border-radius: 20px;
+}
+
+/* the two faces stack, each hides its own back */
+.cred-flip__face {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  margin: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: auto;
+}
+.cred-flip__front {
+  transform: rotateY(0deg);
+}
+.cred-flip__back {
+  transform: rotateY(180deg);
+  background: rgba(26, 122, 117, 0.06);
+  border-color: rgba(26, 122, 117, 0.22);
+}
+
+/* lift the whole flip card, not the inner faces, so 3D stays intact */
+.cred-flip .cred:hover {
+  transform: none;
+  box-shadow: none;
+}
+.cred-flip:hover .cred-flip__inner:not(:focus-visible) {
+  transform: translateY(-2px);
+}
+.cred-flip.is-flipped:hover .cred-flip__inner {
+  transform: rotateY(180deg) translateY(2px);
+}
+
+.cred__more {
+  margin-top: auto;
+  padding-top: 0.4rem;
+  font-family: var(--display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+
+.cred__history {
+  margin: 0.35rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+  list-style: none;
+}
+.cred__history li {
+  position: relative;
+  padding-left: 0.85rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #1e262e;
+}
+.cred__history li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cred-flip__inner { transition: none; }
+}
+
 .cred__head {
   display: flex;
   align-items: flex-start;
@@ -720,88 +821,50 @@ ul {
    abstract preview art (skeleton bars / gradient shapes + keyword pills)
    instead. Full real screenshots live on the detail page. */
 .card__preview {
-  position: relative;
   display: grid;
-  grid-template-rows: auto 1fr auto;
   gap: 0.55rem;
-  min-height: 8.2rem;
+  min-height: 6.1rem;
   padding: 0.9rem;
+  border: 1px solid rgba(23, 32, 40, 0.08);
   border-radius: 18px;
-  overflow: hidden;
-  /* accent colors set per-variant below */
-  --a1: #1a7a75;
-  --a2: #0f5f5a;
-  background: linear-gradient(150deg, var(--a1), var(--a2));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
-}
-
-/* Soft light bloom so the flat gradient has depth */
-.card__preview::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    120% 90% at 15% 0%,
-    rgba(255, 255, 255, 0.28),
-    rgba(255, 255, 255, 0) 60%
-  );
-  pointer-events: none;
-}
-
-.card__preview--teal {
-  --a1: #1a7a75;
-  --a2: #0f5f5a;
-}
-.card__preview--coral {
-  --a1: #e07a52;
-  --a2: #c14f2e;
-}
-.card__preview--gold {
-  --a1: #d8a63a;
-  --a2: #b07d16;
-}
-.card__preview--indigo {
-  --a1: #5b6ad0;
-  --a2: #384aad;
-}
-.card__preview--purple {
-  --a1: #8a63c8;
-  --a2: #653b9e;
-}
-.card__preview--crimson {
-  --a1: #d1495b;
-  --a2: #a32e42;
+  background: linear-gradient(
+      160deg,
+      rgba(26, 122, 117, 0.1),
+      rgba(197, 153, 42, 0.06)
+    ),
+    var(--surface-strong);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.48);
 }
 
 .card__preview-label {
-  position: relative;
-  z-index: 1;
   justify-self: start;
   font-family: var(--display);
   font-size: 0.68rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #fff;
-  background: rgba(0, 0, 0, 0.22);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(23, 32, 40, 0.08);
   border-radius: 999px;
-  padding: 0.28rem 0.6rem;
+  padding: 0.28rem 0.55rem;
 }
 
-.card__preview-icon {
-  position: relative;
-  z-index: 1;
-  justify-self: start;
-  align-self: center;
-  font-size: 2.6rem;
-  line-height: 1;
-  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.28));
+.card__preview-art {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.35rem;
+  height: 2.4rem;
+}
+
+.card__preview-bar {
+  flex: 1;
+  border-radius: 6px 6px 2px 2px;
+  background: linear-gradient(180deg, var(--teal), rgba(26, 122, 117, 0.35));
+  opacity: 0.85;
 }
 
 .card__preview-tags {
-  position: relative;
-  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   gap: 0.35rem;
@@ -813,11 +876,11 @@ ul {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(23, 32, 40, 0.08);
   border-radius: 999px;
-  padding: 0.24rem 0.55rem;
+  padding: 0.24rem 0.5rem;
 }
 
 .card__shot {
@@ -980,30 +1043,20 @@ ul {
 
 .card__link {
   font-family: var(--display);
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #fff;
-  background: var(--teal);
-  border-radius: 999px;
-  padding: 0.45rem 0.85rem;
+  color: var(--ink);
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  box-shadow: 0 3px 10px rgba(26, 122, 117, 0.22);
-  transition: background-color 160ms ease, gap 160ms ease, transform 160ms ease;
-}
-
-.card__link span {
-  font-size: 1rem;
-  line-height: 1;
+  gap: 0.35rem;
+  transition: color 160ms ease, gap 160ms ease;
 }
 
 .card__link:hover {
-  background: #12605b;
-  gap: 0.65rem;
-  transform: translateX(2px);
+  color: var(--teal);
+  gap: 0.6rem;
 }
 
 .card__link--pending {
@@ -1203,105 +1256,18 @@ ul {
 }
 
 .project-detail__gallery .card__shot {
-  max-height: 520px;
+  max-height: 480px;
   object-fit: contain;
+  transition: max-height 260ms ease, transform 260ms ease;
 }
 
 .card__shot--expandable {
   cursor: zoom-in;
 }
 
-/* "Enlarge" affordance on the gallery image */
-.carousel__expand {
-  position: absolute;
-  top: 0.7rem;
-  right: 0.7rem;
-  z-index: 2;
-  font-family: var(--display);
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #fff;
-  background: rgba(23, 32, 40, 0.78);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 999px;
-  padding: 0.4rem 0.7rem;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  transition: background-color 160ms ease;
-}
-
-.carousel__expand:hover {
-  background: var(--teal);
-}
-
-/* Lightbox — full-size screenshot overlay */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  display: grid;
-  place-items: center;
-  padding: clamp(1rem, 4vw, 3rem);
-  background: rgba(18, 22, 26, 0.86);
-  backdrop-filter: blur(4px);
+.project-detail__gallery .card__shot--expandable.is-zoomed {
+  max-height: 760px;
   cursor: zoom-out;
-  animation: lightbox-in 180ms ease;
-}
-
-@keyframes lightbox-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.lightbox__img {
-  max-width: min(1200px, 96vw);
-  max-height: 90vh;
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
-  cursor: default;
-}
-
-.lightbox__close {
-  position: absolute;
-  top: 1.1rem;
-  right: 1.3rem;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  background: rgba(0, 0, 0, 0.4);
-  color: #fff;
-  font-size: 1.8rem;
-  line-height: 1;
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  transition: background-color 160ms ease, transform 160ms ease;
-}
-
-.lightbox__close:hover {
-  background: var(--coral);
-  transform: scale(1.08);
-}
-
-.lightbox__nav {
-  position: fixed;
-  top: 50%;
-}
-
-.lightbox__nav.carousel__nav--prev {
-  left: clamp(0.8rem, 3vw, 2rem);
-}
-
-.lightbox__nav.carousel__nav--next {
-  right: clamp(0.8rem, 3vw, 2rem);
 }
 
 .project-detail__overview {
