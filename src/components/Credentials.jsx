@@ -5,7 +5,7 @@ import { credentials } from '../data/config.js'
 // a small lift (handled in CSS); a click flips it and the card grows to fit the
 // history so nothing scrolls. The back height is measured from the real content
 // so every card grows exactly as much as it needs.
-function CredCard({ eyebrow, primary, secondary, logo, history, wide }) {
+function CredCard({ eyebrow, primary, secondary, logo, history, wide, accent }) {
   const [flipped, setFlipped] = useState(false)
   const [backH, setBackH] = useState(null)
   const backRef = useRef(null)
@@ -35,7 +35,7 @@ function CredCard({ eyebrow, primary, secondary, logo, history, wide }) {
 
   return (
     <div
-      className={`cred-flip ${wide ? 'cred--wide' : ''} ${flipped ? 'is-flipped' : ''}`}
+      className={`cred-flip ${wide ? 'cred--wide' : ''} ${accent ? `cred-flip--${accent}` : ''} ${flipped ? 'is-flipped' : ''}`}
       style={style}
     >
       <div
@@ -99,6 +99,7 @@ export default function Credentials() {
         secondary={currentRole.org}
         logo={currentRole.logo}
         history={currentRole.history}
+        accent="coral"
       />
       <CredCard
         eyebrow="Previous Role"
@@ -133,6 +134,7 @@ export default function Credentials() {
           primary={personality.stat}
           secondary={personality.note}
           history={personality.history}
+          accent="gold"
         />
       )}
     </div>

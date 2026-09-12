@@ -541,17 +541,35 @@ ul {
   /* the lift/shadow live on the faces, so they never disturb the 3D flip */
   transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
 }
+/* each card carries an --accent (teal by default); specific cards override it */
+.cred-flip {
+  --accent: var(--teal);
+  --accent-rgb: 26, 122, 117;
+}
+.cred-flip--coral {
+  --accent: var(--coral);
+  --accent-rgb: 216, 110, 75;
+}
+.cred-flip--gold {
+  --accent: var(--gold);
+  --accent-rgb: 197, 153, 42;
+}
+/* tint the eyebrow label to match the card accent */
+.cred-flip--coral .cred__eyebrow,
+.cred-flip--gold .cred__eyebrow {
+  color: var(--accent);
+}
+
 .cred-flip__front {
   transform: rotateY(0deg);
-  /* teal accent strip down the left edge, so the cards read as one branded,
-     clickable set */
-  border-left: 3px solid var(--teal);
+  /* accent strip down the left edge, so the cards read as a clickable set */
+  border-left: 3px solid var(--accent);
 }
 .cred-flip__back {
   transform: rotateY(180deg);
-  background: rgba(26, 122, 117, 0.06);
-  border-color: rgba(26, 122, 117, 0.22);
-  border-left: 3px solid var(--teal);
+  background: rgba(var(--accent-rgb), 0.06);
+  border-color: rgba(var(--accent-rgb), 0.22);
+  border-left: 3px solid var(--accent);
   height: auto;
   min-height: 100%;
 }
@@ -567,7 +585,7 @@ ul {
 }
 .cred-flip.is-flipped .cred-flip__inner:hover .cred-flip__back {
   transform: rotateY(180deg) translateY(4px);
-  box-shadow: 0 20px 34px rgba(26, 122, 117, 0.16);
+  box-shadow: 0 20px 34px rgba(var(--accent-rgb), 0.16);
 }
 .cred-flip .cred:hover {
   transform: none;
@@ -580,13 +598,13 @@ ul {
   margin-top: auto;
   padding-top: 0.65rem;
   margin-top: 0.7rem;
-  border-top: 1px solid rgba(26, 122, 117, 0.18);
+  border-top: 1px solid rgba(var(--accent-rgb), 0.18);
   font-family: var(--display);
   font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--teal);
+  color: var(--accent);
   display: flex;
   align-items: center;
   gap: 0.4rem;
