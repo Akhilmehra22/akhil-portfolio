@@ -58,6 +58,14 @@ export default function Hero() {
             <a className="btn" href="#all-projects">
               Passion Projects
             </a>
+            <a
+              className="btn"
+              href="/Akhil_Mehra_Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Résumé
+            </a>
             <a className="btn" href={`mailto:${config.email}`}>
               Send Message
             </a>

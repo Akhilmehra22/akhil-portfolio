@@ -6,6 +6,7 @@ const links = [
   { href: '#featured-projects', label: 'Work' },
   { href: '#skills', label: 'Toolkit' },
   { href: '#all-projects', label: 'Passion Projects' },
+  { href: '/Akhil_Mehra_Resume.pdf', label: 'Résumé', external: true },
 ]
 
 function GithubIcon() {
@@ -47,11 +48,22 @@ export default function Header() {
           {config.name}
         </a>
         <nav className="site-nav" aria-label="Sections">
-          {links.map((l) => (
-            <a key={l.href} href={l.href}>
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) =>
+            l.external ? (
+              <a
+                key={l.href}
+                href={l.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {l.label}
+              </a>
+            ) : (
+              <a key={l.href} href={l.href}>
+                {l.label}
+              </a>
+            )
+          )}
           <a className="site-nav-cta" href="#connect">
             Connect
           </a>
